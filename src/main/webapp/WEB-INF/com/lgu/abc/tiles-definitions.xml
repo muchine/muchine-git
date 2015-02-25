@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<!-- main page  -->
+	<definition name="/*"       template="/WEB-INF/com/lgu/abc/tiles-template-main.jsp">
+	    <put-attribute name="content"    value="/WEB-INF/com/lgu/abc/{1}.jsp"/>
+	</definition>
+	
+	<!-- mywork main page  -->
+	<definition name="/mywork/main"    template="/WEB-INF/com/lgu/abc/tiles-template-main.jsp">
+	    <put-attribute name="content"  value="/WEB-INF/com/lgu/abc/mywork/main.jsp"/>
+	</definition>
+	
+	<!-- support main page  -->
+	<definition name="/support/main"    template="/WEB-INF/com/lgu/abc/tiles-template-main.jsp">
+	    <put-attribute name="content"  value="/WEB-INF/com/lgu/abc/support/main.jsp"/>
+	</definition>
+	
+	<!-- monitor page  -->
+	<definition name="/monitor/*"    template="/WEB-INF/com/lgu/abc/tiles-template-empty.jsp">
+	    <put-attribute name="content"  value="/WEB-INF/com/lgu/abc/monitor/{1}.jsp"/>
+	</definition>
+	
+	<!-- error page  -->
+	<definition name="/error/*"    template="/WEB-INF/com/lgu/abc/tiles-template-empty.jsp">
+	    <put-attribute name="content"  value="/WEB-INF/com/lgu/abc/error/{1}.jsp"/>
+	</definition>
+
+	<!-- sub page -->
+ 	<definition name="/*/*"     template="/WEB-INF/com/lgu/abc/tiles-template.jsp">
+	    <put-attribute name="content"    value="/WEB-INF/com/lgu/abc/{1}/{2}.jsp"/>
+	</definition>
+	<definition name="/*/*/*"   template="/WEB-INF/com/lgu/abc/tiles-template.jsp">
+	    <put-attribute name="content"    value="/WEB-INF/com/lgu/abc/{1}/{2}/{3}.jsp"/>
+	</definition>
+			
+</tiles-definitions>

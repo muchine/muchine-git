@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/tags/taglib.inc"%>
+
+<form name="onnetSsoForm" method="post" action="${onnetAccount.redirectUrl}" target="_blank">
+	<input type="hidden" name="onnetUrl" value="${onnetAccount.url}"/>
+	<input type="hidden" name="userId" value="${onnetAccount.loginId}"/>
+	<input type="hidden" name="password" value="${onnetAccount.password}"/>
+	<input type="hidden" name="scode" value="${onnetAccount.moduleCode}"/>
+</form>

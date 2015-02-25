@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.company.Company">
+
+	<resultMap id="result" type="Company">
+		<id property="id" column="company.id"/>
+		
+		<result property="name"		column="company.name"/>
+		<result property="domain"	column="company.domain"/>
+		<collection property="domains"	resultMap="com.lgu.abc.core.prototype.org.company.CompanyDomain.result"/>
+	</resultMap>
+	
+	<sql id="columns">
+			 uc.CORP_SEQ	as "company.id"
+			,uc.CORP_NM		as "company.name"
+			,uc.BSIC_DOMN	as "company.domain"
+			,<include refid="com.lgu.abc.core.prototype.org.company.CompanyDomain.columns"/>
+	</sql>
+	
+	<sql id="count">
+			count(uc.CORP_SEQ)
+	</sql>
+		
+	<sql id="table">
+		from USR_CORP uc
+	</sql>
+		
+	<sql id="join">
+		left join USR_CORP_DOMN ucd on uc.CORP_SEQ = ucd.CORP_SEQ
+		<include refid="com.lgu.abc.core.prototype.org.company.CompanyDomain.join"/>
+	</sql>
+	
+	<sql id="whereOne">
+		where CORP_SEQ = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where uc.CORP_SEQ = #{id}
+	</sql>
+	
+	<sql id="findAll">
+		<where>
+			<if test="query.domain != null">
+				ucd.DOMN_NM = #{query.domain}
+			</if>
+			
+			<if test="query.primaryDomain != null">
+				and uc.BSIC_DOMN = #{query.primaryDomain}
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+		
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+ 	</select>
+ 	
+</mapper>

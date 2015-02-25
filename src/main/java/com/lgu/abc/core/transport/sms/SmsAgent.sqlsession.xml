@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.transport.sms.SmsAgent">
+
+	<insert id="create">
+		insert into SC_TRAN (
+			 TR_SENDDATE
+			,TR_ID			
+			,TR_SENDSTAT 
+			,TR_MSGTYPE			 
+			,TR_PHONE
+			,TR_CALLBACK 
+			,TR_MSG 
+			,TR_ETC1
+			,TR_ETC2 
+			,TR_ETC3 
+			,TR_ETC4
+			,TR_ETC5 
+			,TR_ETC6 
+			,TR_NET
+		)
+		values (
+			 #{sentDate, typeHandler=org.apache.ibatis.type.DateTypeHandler}
+			,NULL
+			,'0'
+			,'0'
+			,#{receiver}
+			,#{sender}
+			,#{content}
+			,NULL			
+			,NULL
+			,NULL
+			,NULL			
+			,NULL
+			,NULL
+			,NULL
+		)
+		<selectKey keyProperty="id" resultType="String" order="AFTER">
+	        select @@IDENTITY
+	    </selectKey>
+	</insert>
+	
+</mapper>

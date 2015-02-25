@@ -1,0 +1,305 @@
+@CHARSET "UTF-8";
+
+/*위젯명 정의
+
+사용자정보 : wg_profile
+
+To-do그래프 : wg_todo
+
+근태정보 :wg_wrk
+
+달력(이미지) : wg_cal
+
+쪽지 : wg_note
+
+메일 : wg_mail
+
+친구 : wg_group
+
+코웍 : wg_cowork
+
+전자결재 : wg_apr
+
+달력(리스트) :wg_calendar
+
+포토앨범 : wg_poto
+
+게시판 : wg_brd
+
+타스크 : wg_task
+
+요청 : wg_request
+
+*/
+
+
+
+
+
+
+/*=== 전역 => 위젯별 스타일 정의 ============================= */
+.wgBx	{margin-bottom:10px;}
+	/*관리자위젯시 표시아이콘, 위젯닫기아이콘*/
+	.laySortable_corp span._corp {position:absolute; top:5px; right:0; display:block; background:url(../../images/wg_pin.png) no-repeat; width:20px; height:14px; text-indent:-9999px}
+	.laySortable_corp .wgBx .wg_close{display:none; position:absolute; right:23px; top:6px; }
+	.laySortable_usr .wgBx .wg_close{display:none; position:absolute; right:5px; top:6px; }
+	.laySortable_usr span._corp {display:none;}
+.wgBx_placeholder_corp {height:150px; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.7;} /* border:1px solid #0174DF; background-color:#0174DF; */
+.wgBx_placeholder_usr  {height:150px; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.7;} /* border:1px solid #40FF00; background-color:#40FF00; */
+.wgTop	{position:relative; height:19px; padding:5px 0 0 7px;}
+.wgTop .txt 	{padding:0 0 0 24px; color:#fff; font-size:12px; line-height:12px; vertical-align:top; font-weight:bold;}
+.wgBottom		{height:22px; padding:8px 10px 0 7px; box-shadow:0px 1px 0 rgba(0, 0, 0, 0.3 );}	
+.wgBottom .more {float:right; letter-spacing:-1px; color:#8f97a9}
+.wgContents, .profileInfo {border-top:none;}
+
+/*위젯 테이블 4번째 tr 선 삭제*/
+.noteBox tr:first-child + tr + tr + tr, .taskBox tr:first-child + tr + tr + tr, .mailBox tr:first-child + tr + tr + tr, 
+.calendarBox tr:first-child + tr + tr + tr, .requestBox tr:first-child + tr + tr + tr, .brdBox tr:first-child + tr + tr + tr 
+{border-bottom:none;}
+
+
+
+
+table.noteBox, table.mailBox, table.coworkBox, table.signBox, table.calendarBox, table.brdBox, table.taskBox, table.requestBox {table-layout:fixed;}
+.nowrapBx {overflow:hidden; white-space:nowrap; text-overflow:clip;}
+
+/*사용자정보 위젯*/
+.wg_profile {position:relative; width:100%;}
+.profileTop {height:23px; }
+	.profileTop.clip {position:absolute; left:-10px; top:-10px; width:200px; height:71px; background:url(../../images/main_wg/clip.png) no-repeat 0 0; z-index:11; color:#ffffff; padding:14px 0 0 50px;}
+	.profileInfo {position:relative; height:120px; padding:0 0 0 10px; background:#fff; border-bottom:none;}	
+		.profileInfo .pic {position:absolute; left:4px; top:0px; width:102px; height:108px; padding:13px 0 0 15px; background:url(../../images/main_wg/userbg.png) no-repeat 0 0; z-index:10;}
+		.profileInfo .pic img {width:80px; height:87px;}
+		.profileInfo .txt {position:relative; padding:10px 0 0 115px; font-size:11px; color:#565656;}
+		.profileInfo .txt p{margin-top:10px;}
+		.profileInfo .txt .h2 {color:#565656; font-size:14px; font-weight:bold;}
+		.wg_profile .wgBottom {height:22px; padding:6px 10px 2px 7px; border-radius:0 0 5px 5px; box-shadow:0px 2px 1px rgba(0, 0, 0, 0.3 );}	
+		.wg_profile .wgBottom a.k-button {margin-top:-6px; margin-right:-7px;}
+
+/* 달력(이미지) 위젯 */
+.wgBx.wg_cal table.k-content td, .wgBx.wg_cal table.k-content th {text-align:center;}
+.k-wg_cal {width:100%; margin:-1px 0 0 -1px;}
+.wg_cal {position:relative; height:362px; padding:0; background:url(../../images/main_wg/calendar_bg.jpg) repeat-x bottom #fff;}
+	.cal_navi {position:relative; height:15px; width:100%; padding:20px 0 10px 0; text-align:center;}
+	.cal_navi a {width:12px; height:12px; margin:5px 0; text-indent:-9999px;}
+	.cal_navi a.go_prev {float:left; margin-left:30px; background:url(../../images/main_wg/calendar_leftbt.jpg) no-repeat 0 0;}
+	.cal_navi a.go_next {float:right;margin-right:30px; background:url(../../images/main_wg/calendar_rightbt.jpg) no-repeat 0 0;}
+		.clb {width:100%; border:1px solid #d9d9d9; background-color:#e7e7e7;}
+		.clb td {padding:10px 0; border:1px solid #d9d9d9; text-align:center; font-weight:bold; color:#939393; box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);}
+		.clb td.current_view {color:#fff; background:#ea0000; box-shadow: inset 2px 2px 2px 0px rgba(0,0,0,0.4);}
+			.cal_result { margin-top:5px; padding-left:5px;}
+			.cal_result li{float:left;}
+			.cal_result span {display:block; text-align:center;}
+				.cal_result .cal_week {width:33%}
+				.cal_result .cal_week .count {height:64px; line-height:64px; background-color:#f7f7f7;
+																					border:1px solid #e2e2e2; border-top:none; border-radius:0 0 5px 5px;
+																					font-size:14px; font-weight:bold; color:#636166}
+				.cal_result .cal_week .week{height:17px; padding:4px 0; background-color:#ffd83b; font-size:11px; font-weight:bold; color:#bc8f40; border-radius:5px 5px 0 0;
+																					background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));}
+				.cal_result .cal_today {width:33%;}
+				.cal_result .cal_today .count {height:64px;line-height:64px; background-color:#f7f7f7; 
+																					border:1px solid #e2e2e2; border-top:none; border-left:none; border-radius:0 0 5px 5px;
+																					font-size:14px; font-weight:bold; color:#636166}
+				.cal_result .cal_today .day{height:17px; padding:4px 0; background-color:#d9d9db; font-size:11px; font-weight:bold; color:#7d7f88; border-radius:5px 5px 0 0;
+																					background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));}
+				.cal_result .cal_tomorrow {width:33%;}
+				.cal_result .cal_tomorrow .count {height:64px; line-height:64px; background-color:#f9f9f9; 
+																						border:1px solid #e2e2e2; border-top:none; border-left:none; border-radius:0 0 5px 5px;
+																						font-size:14px; font-weight:bold; color:#636166}
+				.cal_result .cal_tomorrow .day{height:17px; padding:4px 0; background-color:#d9d9db; font-size:11px; font-weight:bold; color:#7d7f88; border-radius:5px 5px 0 0;
+																					background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+																					background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));}
+
+
+/* 쪽지 위젯 */
+.wg_note {position:relative; width:100%;}
+	.wgTop .icoNote {position:absolute; width:16px; height:14px; margin-left:3px; background:url(../../images/main_wg/wgico_note.png) no-repeat 0 0;}
+	.wg_note .wgContents {position:relative; height:120px; padding:0 10px; background:#fff; border-bottom:none; overflow:hidden;}	
+		.wgContents .noteBox {width:100%;}
+		.noteBox .w2 {width:2px;}
+		.noteBox tr {height:30px; border-bottom:1px solid #d3d3d3;}
+			.noteBox td.nodata_note_name {width:auto; padding-left:0px; color:#000}
+			.noteBox td.note_name {width:60px; text-align:left; color:#8f97a8; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+			/* .noteBox td.note_sbj {width:auto; padding-left:10px; border-left:1px solid #ffe6e8; color:#000;} */
+			.noteBox td.note_sbj {width:auto; padding-left:0px;  color:#000;}
+			.noteBox td.note_sbj strong{font-weight:bold;}
+			.noteBox td.date {width:45px; font-size:11px; color:#8f97a8; padding-left:0px; text-align:right;}
+
+/*위젯 TODO*/
+.wg_todo {position:relative; width:100%;}
+	.wgTop .icoTodo {position:absolute; width:16px; height:14px; background:url(../../images/main_wg/wgico_todo.png) no-repeat 0 0;}
+	.wg_todo .wgContents {position:relative; height:100px; padding:10px 10px; background:#fff; border-bottom:none;}
+		.wgContents .graph {width:100%;}
+		.wgContents .graphCol {height:80px; border-bottom:1px solid #ccc;}
+		.wgContents .graphCol td div {cursor:pointer;}
+		.wgContents .graph td {height:20px; color:#666666; vertical-align:bottom; text-align:center;}
+		.wgContents .graph td span {display:block;}
+			.wgContents .grpCounter {display:block; width:40px; padding:2px; color:#000; border-radius:5px; background-color:#f4f4f4; font-size:11px; margin:auto}
+			.wgContents .grpCounter .tail {position:absolute; display:block; margin-left:12px; border-right :8px solid transparent; border-top:8px solid #f4f4f4; border-left :8px solid transparent;}
+			.wgContents .grpMail {height:5px; background-color:#ef502a; text-indent:-9999px;}
+			.wgContents .grpNote {height:5px; background-color:#23c5bd; text-indent:-9999px;}
+			.wgContents .grpCal  {height:5px; background-color:#9879dd; text-indent:-9999px;}
+			.wgContents .grpSign {height:5px; background-color:#fdcb35; text-indent:-9999px;}
+			.wgContents .grpTodo {height:5px; background-color:#82b4f5; text-indent:-9999px;}	
+		.wgBottom .txt {padding:0 0 0 5px; font-weight:bold;}
+
+
+/*위젯 근태정보*/
+.wg_wrk {position:relative; width:100%;}
+	.wgTop .icoCheck {position:absolute; width:18px; height:17px; background:url(../../images/main_wg/wgico_check.png) no-repeat 0 -1px;}
+	.wg_wrk .wgContents {position:relative; height:88px; padding:20px 20px 10px 20px; background:#fff; border-bottom:none;}	
+		.wgContents .checkDate {font-size:14px; font-weight:bold; color:#000;}
+		.wgContents .checkDay {font-size:14px; font-weight:bold; }
+	.wg_wrk .wgContents time {display:block; margin:10px 0 0 0; font-size:37px; font-weight:bold; color:#000; letter-spacing:-2px;}
+			.wgContents li.btn { float:right; padding-top:32px;}
+			    .wgContents .btn .checkBtn.gtw.none       {display:inline-block; float:left; width:58px; height:46px;}
+				.wgContents .btn .checkBtn.lto.none       {display:inline-block; width:58px; height:46px;}
+				.wgContents .btn .checkBtn.gtw.on         {display:inline-block; float:left; width:58px; height:46px;}
+				.wgContents .btn .checkBtn.lto.off        {display:inline-block; width:58px; height:46px;}
+				.wgContents .btn .checkBtn.gtw.off        {display:inline-block; float:left; width:58px; height:46px;}
+				.wgContents .btn .checkBtn.lto.on         {display:inline-block; width:58px; height:46px;}		
+				
+	.wg_wrk .wgBottom {position:relative; height:23px; line-height:13px; color:#000; font-weight:100;}
+			.wgBottom time {color:#000;}
+			.resultTxt {margin:0 20px 0 0;}
+			.resultBox {padding:2px 30px 4px; border-radius:20px; color:#fff; text-align:center; font-weight:bold}
+
+
+/*위젯 메일*/
+.wg_mail {position:relative; width:100%;}
+	.wgTop .icoMail {position:absolute; width:16px; height:14px; margin-left:0px; background:url(../../images/main_wg/wgico_mail.png) no-repeat 0 0;}
+	.wg_mail .wgContents {position:relative; height:120px; padding:0 10px; background:#fff; border-bottom:none; overflow:hidden}	
+		.wgContents .mailBox { width:100%;}
+		.mailBox .mailIco {width:15px;}
+			.mail_icon {display:block; width:13px; height:12px; margin:0 5px; background:url(../../images/main_wg/mail_off.jpg) no-repeat 0 0;}
+			strong .mail_icon {background:url(../../images/main_wg/mail_on.jpg) no-repeat 0 0;}
+		.mailBox .w2 {width:2px;}
+		.mailBox tr {height:30px; border-bottom:1px solid #d3d3d3;}
+		/* .mailBox .mail_name {width:50px; padding:0 10px; border-right:1px solid #ffe6e8; text-align:center; color:#8f97a8;} */
+		.mailBox .mail_name {width:60px; text-align:left; color:#8f97a8; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+		/* .mailBox .mail_sbj {padding-left:10px; border-left:1px solid #ffe6e8; color:#000;} */
+		.mailBox .mail_sbj {width:auto; padding-left:0px; color:#000;}
+		.mailBox .mail_sbj strong{font-weight:bold;}
+		.mailBox .date {width:40px; font-size:11px; color:#8f97a8; padding-left:0px; text-align:right;}
+		
+		
+		
+/*위젯 친구*/
+.wg_group {position:relative; width:100%}
+	.wgTop .icoGroup {position:absolute; width:18px; height:14px; background:url(../../images/main_wg/wgico_group.png) no-repeat 0 1px;}
+	.wg_group .wgContents {position:relative; height:110px; padding:5px 10px; background:#fff; border-bottom:none;}
+	.wg_group .wgContents_nodata {position:relative; height:110px; padding:0 10px; background:#fff; border-bottom:none;}
+		.groupPic {display:block; float:left; width:51px; height:51px; margin-right:5px;}
+		
+		
+/*위젯 cowork*/
+.wg_cowork {position:relative; width:100%;}
+	.wgTop .icoCowork {position:absolute; width:18px; height:14px; background:url(../../images/main_wg/wgico_cowork.png) no-repeat 0 0;}
+	.wg_cowork .wgContents {position:relative; padding:0 10px 0 10px; background:#fff; border-bottom:none; overflow:hidden;}
+		.coworkBox {width:100%;}
+		.coworkBox .w2 {width:2px;}
+		.coworkBox tr {height:36px; border-bottom:1px solid #d3d3d3;}
+		.coworkBox td.cowork_title {width:80px; color:#8f97a8; font-weight:bold;}
+		.coworkBox td.cowork_name {width:auto; padding-left:10px; color:#000}
+		.coworkBox td.cowork_name strong{font-weight:bold;}
+
+/*위젯 전자결재*/
+.wg_apr {position:relative; width:100%;}
+	.wgTop .icoSign {position:absolute; width:18px; height:16px; background:url(../../images/main_wg/wgico_sign.png) no-repeat 0 0;}
+	.wg_apr .wgContents {position:relative; height:120px; padding:0 10px 0 10px; background:#fff; border-bottom:none; overflow:hidden;}
+	.wg_apr .wgContents li {width:48%; padding-top:20px; text-align:center;}
+	.wg_apr .wgContents li._line {display:block; float:left; width:1px; height:70px; margin-top:15px; background-color:#e8e8e8}
+	.wg_apr .wgContents li p {margin-bottom:10px;}
+	.wg_apr .wgContents li span { display:block; padding:10px; font-size:30px;}
+		.wgContents .signBox {width:100%;}
+		.signBox .w2 {width:2px;}
+		.signBox tr {height:32px; border-bottom:1px solid #d3d3d3;}
+		.signBox td.sign_title {width:auto; color:#8f97a8; font-weight:bold;}
+		.signBox td.sign_name {width:100px; padding-left:10px; color:#000; text-align:right;}
+		.signBox td.sign_name strong{font-weight:bold;}
+
+
+/*위젯 달력-리스트*/
+.wg_calendar {position:relative; width:100%;}
+.wgTop .icoCalendar {position:absolute; width:18px; height:14px; background:url(../../images/main_wg/wgico_cal.png) no-repeat 0 -1px;}
+	.wg_calendar .wgContents {position:relative; height:120px; padding:0 10px 0 5px; background:#fff; border-bottom:none; overflow:hidden;}
+		.calendarBox {width:100%;}
+		.calendarBox .w2 {width:2px;}
+		.calendarBox tr {height:30px; border-bottom:1px solid #d3d3d3;}
+		/* .calendarBox td.calendar_name {width:auto; padding-left:10px; border-left:1px solid #ffe6e8; color:#000} */
+		.calendarBox td.calendar_name {width:auto; padding-left:0px; color:#000}
+		.calendarBox td.calendar_name strong{font-weight:bold;}
+		.calendarBox td.invited {width:80px; text-align:left; color:#8f97a8; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;} 
+		/* .calendarBox td.calendar_date {width:60px; border-right:1px solid #ffe6e8; color:#8f97a8; font-weight:bold; text-align:center;} */
+		.calendarBox td.calendar_date {width:40px; font-size:11px; color:#8f97a8; padding-left:0px; text-align:right;}
+		
+/*위젯 포토앨범*/
+.wg_poto  {position:relative; width:100%;}
+.wgTop .icoPoto {position:absolute; width:18px; height:14px; background:url(../../images/main_wg/wgico_poto.png) no-repeat 0 0;}
+	.wg_poto .wgContents {position:relative; height:295px; padding:13px 0 0 16px; background:#fff; border-bottom:none; overflow:hidden;}
+	.wg_poto .wgContents_nodata {position:relative; height:295px; padding:0 10px 0 5px; background:#fff; border-bottom:none; overflow:hidden;}
+		.wgContents .poto_set {float:left; margin-right:12px; margin-bottom:5px;}
+		.poto_set .pic{display:block; width:70px; height:70px; background-color:#000;
+		 	padding: 0px;
+			cursor: pointer;
+			display:table-cell; 
+        	text-align: center; 
+        	vertical-align: middle;
+		}
+		.poto_set .txt{display:block; height:19px; width:70px; margin-top:5px; font-size:11px; color:#999; text-align:center; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+
+
+/*위젯 공지사항*/
+.wg_brd {position:relative; width:100%;}
+.wgTop .icoBrd {position:absolute; width:16px; height:14px; margin-left:3px; background:url(../../images/main_wg/wgico_notice.png) no-repeat 0 0;}
+	.wg_brd .wgContents {position:relative; height:120px; padding:0 10px; background:#fff; border-bottom:none; overflow:hidden;}	
+		.brdBox {width:100%;}
+		.brdBox .w2 {width:2px;}
+		.brdBox tr {height:30px; border-bottom:1px solid #d3d3d3;}
+		/* .brdBox td.note_name {width:60px; text-align:center; color:#8f97a8} */
+		.brdBox td.note_name {width:60px; text-align:left; color:#8f97a8; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+		/* .brdBox td.note_sbj {width:auto; padding-left:5px; color:#000} */
+		.brdBox td.note_sbj {width:auto; padding-left:0px; color:#000}
+		.brdBox td.note_sbj strong {font-weight:bold;}
+		/* .brdBox td.date {width:80px; font-size:11px; color:#8f97a8} */	
+		.brdBox td.date {width:40px; font-size:11px; color:#8f97a8; padding-left:0px; text-align:right;}
+
+
+/*위젯 TASK*/
+.wg_task {position:relative; width:100%;}
+.wgTop .icoTask {position:absolute; width:16px; height:15px; background:url(../../images/main_wg/wgico_task.png) no-repeat 0 0;}
+	.wg_task .wgContents {position:relative; height:120px; padding:0 10px; background:#fff; border-bottom:none; overflow:hidden;}	
+		.taskBox {width:100%;}
+		.taskBox .w2 {width:2px;}
+		.taskBox tr {height:30px; border-bottom:1px solid #d3d3d3;}
+		/* .taskBox td.note_name {width:60px; border-right:1px solid #ffe6e8; text-align:center; color:#8f97a8} */
+		.taskBox td.note_name {width:60px; text-align:left; color:#8f97a8; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+		/* .taskBox td.note_sbj  {padding-left:00px; border-left:1px solid #ffe6e8; color:#000} */
+		.taskBox td.note_sbj  {with:auto; padding-left:0px; color:#000}
+		.taskBox td.note_sbj strong {font-weight:bold;}
+		.taskBox td.date {width:40px; font-size:11px; color:#8f97a8; padding-left:0px; text-align:right;}
+
+/*위젯 요청*/
+.wg_request {position:relative; width:100%;}
+.wgTop .icoRequest {position:absolute; width:16px; height:15px; background:url(../../images/main_wg/wgico_request.png) no-repeat 0 0;}
+	.wg_request .wgContents {position:relative; height:120px; padding:0 10px; background:#fff; border-bottom:none; overflow:hidden;}	
+		.requestBox {width:100%;}
+		.requestBox .w2 {width:2px;}
+		.requestBox tr {height:30px; border-bottom:1px solid #d3d3d3;}
+		/* .requestBox td.note_name {width:60px; border-right:1px solid #ffe6e8; text-align:center; color:#8f97a8} */
+		.requestBox td.note_name {width:60px; text-align:left; color:#8f97a8; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+		/* .requestBox td.note_sbj  {padding-left:0px; border-left:1px solid #ffe6e8; color:#000} */
+		.requestBox td.note_sbj  {with:auto; padding-left:0px; color:#000}
+		.requestBox td.note_sbj strong {font-weight:bold;}
+		.requestBox td.date {width:40px; font-size:11px; color:#8f97a8; padding-left:0px; text-align:right;}	

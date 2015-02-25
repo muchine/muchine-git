@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+/* CSS RESET UNDO */
+
+.contentPrint {
+	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+	color: #333;
+	font-size: 13px;
+	line-height: 1.6em;
+}
+
+.contentPrint h1 {	
+	font-size:138.5%;  
+}
+.contentPrint h2 {	
+	font-size:123.1%; 
+}
+.contentPrint h3 {	
+	font-size:108%;  
+}
+/*.contentPrint h1,h2,h3 {	
+	margin:1em 0;
+}*/
+
+.contentPrint h1,.contentPrint h2,.contentPrint h3,.contentPrint h4,.contentPrint h5,.contentPrint h6,.contentPrint strong {
+	font-weight:bold; 
+}
+.contentPrint abbr,.contentPrint acronym {	
+	border-bottom:1px dotted #000;
+	cursor:help;
+} 
+.contentPrint em {
+	font-style:italic;
+}
+.contentPrint del {
+	text-decoration:line-through;
+}
+.contentPrint blockquote,.contentPrint ul,.contentPrint ol,.contentPrint dl {
+	margin:1em;
+}
+.contentPrint ol,.contentPrint ul,.contentPrint dl {
+	margin-left:2em;
+}
+.contentPrint ol li {
+	list-style: decimal outside;	
+}
+.contentPrint ul li {
+	list-style: disc outside;
+}
+.contentPrint dl dd {
+	margin-left:1em;
+}
+
+.contentPrint table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 1px;	
+	border: 1px outset gray;
+	font-size: 13px;
+	line-height: 1.6em;
+}
+
+.contentPrint tr { 
+    display: table-row; 
+    vertical-align: inherit; 
+    border-color: inherit;
+   	height: 20px;
+}
+
+.contentPrint th,.contentPrint td {	
+	border: 1px inset black;
+	padding: 1px 1px 1px 1px;
+	font-size: 13px;
+	line-height: 1.6em;
+	
+}
+.contentPrint th {	
+	font-weight:bold;
+	text-align:center;
+	border: 1px inset #000;
+	font-size: 13px;
+	line-height: 1.6em;
+	
+}
+
+.contentPrint caption {
+	margin-bottom:.5em;
+	text-align:center;
+}
+
+.contentPrint p {
+	margin-top:1em;
+	margin-bottom:1em;
+	font-size: 13px;
+	line-height: 1.6em;
+}
+
+.contentPrint span {	
+	font-size: inherit;
+	line-height: 1.6em;
+}
+
+.contentPrint fieldset,.contentPrint pre {
+	margin-bottom:1em;
+	font-size: 13px;
+	line-height: 1.6em;
+}
+
+

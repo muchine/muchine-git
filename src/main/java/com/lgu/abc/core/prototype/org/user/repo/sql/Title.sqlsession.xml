@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.user.Title">
+
+	<resultMap id="result" type="Title">
+		<id property="id" column="title.id"/>
+
+		<result property="name"		column="title.name"/>
+		<result property="order"	column="title.order"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 ut.DUTY_SEQ	as "title.id"
+		,ut.DUTY_NM		as "title.name"
+		,ut.HIT_ORDER	as "title.order"
+	</sql>
+ 	
+</mapper>

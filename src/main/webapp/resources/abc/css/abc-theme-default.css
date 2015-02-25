@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+/* 삭제대기 -----------------> 파일명 및 파일위치 변경
+
+   /css/abc-common/abc-theme-01.css  ~  abc-theme-04.css
+
+*/
+
+.F_11_blue{color:#235a70; font-size:11px;}
+.F_11_black{color:#000; font-size:11px; font-weight:100;}
+.F_11_black_b{color:#000; font-size:11px; font-weight:bold;}
+.F_12_black{color:#000; font-size:12px;}
+.F_12_black_n {color:#000; font-weight:100; font-size:12px;}
+.F_12_black_b{color:#000; font-size:12px; font-weight:bold;}
+.F_16_black_b {color:#000; font-size:16px; font-weight:bold;}
+.F_12_gray{color:#999; font-size:12px; font-weight:100;}
+.F_12_gray_b{color:#999; font-size:12px; font-weight:bold;}
+.F_11_gray{color:#999; font-size:11px; font-weight:100; letter-spacing:-1px;}
+.F_11_gray_L{color:#b3b3b3; font-size:11px; font-weight:100; margin:0 5px;}/*구분선 ㅁ|ㅁ*/
+.F_11_gray_b{color:#999; font-size:11px; font-weight:bold;}
+.f_12_red_b{color:#f00; font-size:12px; font-weight:bold;}
+.f_12_red{color:#f00; font-size:12px; font-weight:100;}
+.f_11_red{color:#f00; font-size:11px; font-weight:100;}
+.F_16_red_b {color:#f00; font-size:16px; font-weight:bold;}
+
+
+/*서브메뉴*/
+.F_SubMenu_title{margin-left:33px; color:#2f496a; font-size:12px; font-weight:bold; }
+.F_SumMenu_mailAdd{color:#7c7c7c; font-size:12px; font-weight:100; margin-left:10px;}
+.F_quickWrite{color:#315a7f; font-size:12px; font-weight:bold;}
+
+
+/*서브 컨텐츠*/
+.F_tap{color:#235a70;}/*blue*/
+.F_mailsendTxt{color:#fff; font-size:11px; font-weight:bold;}
+.F_subMenuMailInfoTxt{color:#7c7c7c; font-size:12px;}
+.F_mailfile{color:#373737; font-size:11px;}
+.F_12_Dgray {color:#999; font-size:12px; font-weight:100; letter-spacing:0px;}
+
+
+/*서브메뉴 카운트*/
+.cnt {position:absolute; right:8px; top:5px; padding:2px 4px 0 4px; background:#99a0ac; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; font-size:11px; font-weight:bold; color:#fff;}
+li:hover .cnt {position:absolute; right:8px; top:5px; padding:2px 4px 0 4px; background:#318ee3; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; font-size:11px; font-weight:bold; color:#fff;}
+.cnt._on {position:absolute; right:8px; top:5px; padding:2px 4px 0 4px; background:#318ee3; border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; font-size:11px; font-weight:bold; color:#fff;}
+.cnt_n {color:#536fe5; font-size:12px; font-weight:bold;}
+
+
+/* 공용 박스 스타일 : 레이어 등 */
+.abc-box {position:relative; padding:10px; border:1px solid #c5c5c5; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; background-color:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.6)}
+
+/*레이블 선택 selectbox */
+.abc_labelBx {padding:10px; background-color:#daecf4; border:1px solid #94c0d2; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; box-shadow:0 2px 2px rgba(182,212,225,0.5); }
+.label_check_text {position:relative; margin:0; padding:5px 0 5px 17px; color #666; list-style:none; white-space:nowrap;}
+	.label_check-checked {background-image:url(../images/sub_ico_check_checked.png);}
+	.label_check-dual {background-image:url(../images/sub_ico_check_com.png);}
+	.label_check-none {background-image:url(../images/sub_ico_check_emp.png);}
+	.label_check-checked, .label_check-dual, .label_check-none {background-repeat:no-repeat; background-position:left center; background-position: 0% 50%;}
+
+.abc-box_y {position:relative; padding:10px; border:1px solid #c5c5c5; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; background-color:#FFC; box-shadow:0 1px 2px rgba(0,0,0,0.6)}
+
+
+/*업무함 선택된항목 출력*/
+.workSelItemBx {padding:2px; border:1px solid #ccc; font-size:11px; color:#999999}
+
+
+
+
+/*약물*/
+	.apr_yac_gi {padding:3px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#69F;}/*기안*/
+	.apr_yac_su {padding:3px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#F66;}/*수정*/
+	.apr_yac_ban {padding:3px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#aeb2bd;}/*반려*/
+	.apr_yac_gyul {padding:3px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#ac725e;}/*결재*/
+	
+	
+	/*미승인, 회원 상태표시*/
+	.approved {padding:4px 10px 3px 10px; background-color:#ff9900; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; line-height:1.6em}/*승인*/
+	.approved-btn {padding:4px 10px 1px 10px; background-color:#ff9900; color:#fff; border:1px solid #ff9900;
+					border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer; line-height:1.6em;}/*승인버튼*/
+	.approved-btn:hover {background-color:#da8300; border:1px solid #da8300;}
+	.unapproved {padding:4px 10px 3px 10px; background-color:#ff7800; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; line-height:1.6em}/*미승인*/
+	.unapproved-btn {padding:4px 10px 1px 10px; background-color:#ff7800; color:#fff; border:1px solid #ff7800;
+					border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer; line-height:1.6em}/*미승인버튼*/
+	.unapproved-btn:hover {background-color:#cc6000; border:1px solid #cc6000;}
+	.approve_ing {padding:4px 10px 3px 10px; line-height:1.5em; background-color:#f34205; color:#fff; border:1px solid #f34205; border-radius:3px;
+					-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer}/*진행중*/
+	.approve_ing:hover {background-color:#ca3002; border:1px solid #ca3002;}
+	.unapproved_return {padding:4px 10px 3px 10px; background-color:#aeb2bd; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px}/*반려*/
+	.unapproved_return-btn {padding:4px 10px 1px 10px; background-color:#00b696; color:#fff; border:1px solid #00b696;
+							 border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer}/*반려버튼*/
+	.unapproved_return-btn:hover {background-color:#009379; border:1px solid #009379;}
+	.ap_collect {padding:4px 10px 3px 10px; background-color:#00b0ea; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px}/*회수*/
+	.ap_collect-btn {padding:4px 10px 1px 10px; background-color:#00b0ea; color:#fff; border:1px solid #00b0ea;
+							 border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer}/*회수버튼*/
+	.ap_collect-btn:hover {background-color:#0098ca; border:1px solid #0098ca;}
+	.approve {padding:4px 10px 3px 10px;; background-color:#8a64ff; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px} /*회원*/
+	.approve_complete {padding:4px 10px 3px 10px; background-color:#ac725e; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px}/*완료*/ 
+	
+	/*권한 표시*/
+	.shareQ-read {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#9a9cff; color:#fff; font-weight:bold; text-align:center}
+		.shareMng em {display:none}
+	.shareQ-write {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#cd74e6; color:#fff; font-weight:bold; text-align:center}
+	.shareQ-manager {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#f691b2; color:#fff; font-weight:bold; text-align:center}
+	.shareQ-off {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#c2c2c2; color:#fff; font-weight:bold; text-align:center}

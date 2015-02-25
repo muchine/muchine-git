@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+/* 윈도우 :: 공용(일반) 조직도 */
+@import url("./win_cmn_usrOrgan.css");
+
+/* 윈도우 :: 공용(일반) 주소록 */
+@import url("./win_cmn_adrBook.css");
+
+/* 탭 스크립트 */
+.ifmTabConts {display:none;}
+
+/* 조직도 .organSelectSortBx -- 삭제
+.organSelectSortBx {position:relative; width:150px;}
+	 .organSelectSortBx ul.organSelectSort {width:150px; overflow:auto; border:1px solid #ccc;}
+	 .organSelectSortBx ul.organSelectSort li {padding:4px 5px 3px 5px; cursor:pointer;}
+	 .organSelectSortBx ul.organSelectSort li.active {background-color:}
+	 .organSelectSortBx div.organSelectSortBtnBx {position:absolute; bottom:5px; left:225px; width:33px;}
+	 .organSelectSortBx div.organSelectSortBtnBx button {display:block;}
+ */

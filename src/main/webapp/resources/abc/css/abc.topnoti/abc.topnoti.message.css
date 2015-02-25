@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+.abc-topNoti-message-list {
+	
+}
+
+.abc-topNoti-message-list .-item {
+	line-height: 25px;
+}
+
+.abc-topNoti-message-list .-item button {
+	float: right;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.user.DepartmentAssociation">
+
+	<resultMap id="result" type="DepartmentAssociation">
+		<id column="association.department.id"/>
+		
+		<result property="representative"	column="association.representative"/>
+		<result property="leader"			column="association.roles.manager"/>
+		<result property="order"			column="association.order"/>
+		<association property="department" javaType="Department" resultMap="com.lgu.abc.core.prototype.org.department.Department.result" />
+	</resultMap>
+	
+	<resultMap id="role" type="DepartmentRoleTO">
+		<id property="departmentId" column="association.department.id"/>
+		<result property="manager"	column="association.roles.manager"/>
+	</resultMap>
+	
+	<sql id="columns">
+			 da.USR_KEY			as "association.owner"
+			,da.DEPT_SEQ		as "association.department.id"
+			,da.REPR_DEPT_YN	as "association.representative"
+			,da.HIT_ORDER		as "association.order"
+			,da.DEPT_LDR_YN		as "association.roles.manager"
+			,<include refid="com.lgu.abc.core.prototype.org.department.Department.columns"/>
+	</sql>
+	
+	<sql id="count">
+			count(da.USR_KEY)
+	</sql>
+		
+	<sql id="table">
+		from USR_USER_DEPT_MAP da
+	</sql>
+		
+	<sql id="join">
+		left join USR_DEPT ud on da.DEPT_SEQ = ud.DEPT_SEQ
+		<include refid="com.lgu.abc.core.prototype.org.department.Department.join"/>
+	</sql>
+		
+	<sql id="order">
+		
+	</sql>
+ 	
+</mapper>

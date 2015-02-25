@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.infra.option.company.GenericCompanyOption">
+	
+	<resultMap id="result" type="GenericCompanyOption">
+		<id column="option.companyId"/>
+		<id property="name" column="option.name"/>
+		
+		<result property="value"	column="option.value"/>
+		
+		<result property="log.registeredTime"	column="option.registeredTime"/>
+		<result property="log.register"			column="option.register"/>
+		<result property="log.modifiedTime"		column="option.modifiedTime"/>
+		<result property="log.modifier"			column="option.modifier"/>
+		
+		<association property="ownable" resultMap="ownable"/>
+	</resultMap>
+	
+	<resultMap id="ownable" type="Owner">
+		<result property="company.id"		column="option.companyId"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 go.CORP_SEQ		as "option.companyId"
+		,go.ATTR_NM			as "option.name"
+		,go.ATTR_VAL		as "option.value"
+		,go.REG_DTIME		as "option.registeredTime"
+		,go.REG_USR_KEY		as "option.register"
+		,go.MOD_DTIME		as "option.modifiedTime"
+		,go.MOD_USR_KEY		as "option.modifier"
+	</sql>
+	
+	<sql id="count">
+		count(go.CORP_SEQ)
+	</sql>
+	
+	<sql id="table">
+		from USR_CORP_CNFG_ATTR go
+	</sql>
+	
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="whereOne">
+		where CORP_SEQ = #{ownable.id} and ATTR_NM = #{name}
+	</sql>
+	
+	<sql id="findOne">
+		where go.CORP_SEQ = #{ownable.id} and go.ATTR_NM = #{name}
+	</sql>
+	
+	<sql id="whereAll">
+		where CORP_SEQ = #{ownable.id}
+	</sql>
+	
+	<sql id="findAll">
+		where go.CORP_SEQ = #{query.ownable.id}
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+	
+	<insert id="create">
+		insert into USR_CORP_CNFG_ATTR (
+			 CORP_SEQ
+			,ATTR_NM
+			,ATTR_VAL
+			,REG_DTIME
+			,REG_USR_KEY
+			,MOD_DTIME
+			,MOD_USR_KEY
+		)
+		values (
+			 #{ownable.id}
+			,#{name}
+			,#{value}
+			,#{log.registeredTime}
+			,#{log.register}
+			,#{log.modifiedTime}
+			,#{log.modifier}
+		)
+	</insert>
+	
+	<update id="update">
+		update USR_CORP_CNFG_ATTR set
+			 ATTR_VAL		= #{value}
+			,MOD_DTIME		= #{log.modifiedTime}
+			,MOD_USR_KEY	= #{log.modifier}
+		<include refid="whereOne"/>
+	</update>
+	
+	<delete id="delete">
+		delete from USR_CORP_CNFG_ATTR
+		<include refid="whereOne"/>
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from USR_CORP_CNFG_ATTR
+		<include refid="whereAll"/>
+	</delete>
+	
+	<select id="exists" resultType="Integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>
+
+</mapper>

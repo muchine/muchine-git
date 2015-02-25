@@ -1,0 +1,12 @@
+<config>
+		<!-- UDP binding address should be set as JVM system property with -D option -->
+        <UDP bind_addr="172.19.241.109"/>
+        <PING timeout="20000"/>
+        <MERGE2/>
+        <FD_SOCK/>
+        <VERIFY_SUSPECT timeout="1500"  />
+        <pbcast.NAKACK retransmit_timeout="2400,4800"/>
+        <UNICAST/>
+        <pbcast.STABLE/>
+        <pbcast.GMS/>
+</config>

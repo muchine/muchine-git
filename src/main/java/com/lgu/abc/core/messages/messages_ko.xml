@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="ip.invalid">잘못된 IP 주소입니다.</entry>
+	<entry key="attached.invalid">잘못된 첨부 파일 형식입니다.</entry>
+	<entry key="loginid.invalid">잘못된 로그인 ID입니다.</entry>
+	<entry key="password.invalid">잘못된 비밀번호입니다.</entry>
+	<entry key="password.reused">이전 비밀번호와 동일합니다.</entry>
+	<entry key="anniversary.invalid">허용되지 않는 기념일 형식입니다.</entry>
+	<entry key="format.datetime.invalid">잘못된 날짜/시간 형식입니다.</entry>
+	
+	<entry key="import.message.count">총 {0}건 중 {1}번째 건까지 저장되었습니다.</entry>
+	
+	<entry key="exception.message.InvalidPeriodException">유효한 기간이 아닙니다.</entry>
+	
+	<entry key="exception.message.DataImportException">데이터를 저장하는 중 오류가 발생했습니다.</entry>
+	<entry key="exception.message.IllegalRequestException">유효하지 않은 요청입니다.</entry>
+	<entry key="exception.message.InvalidNameException">이름에 ,와 ^는 포함할 수 없습니다.</entry>
+	<entry key="exception.message.UnknownExcelFormatException">알 수 없는 엑셀 형식입니다.</entry>
+	<entry key="exception.message.UnauthorizedRequestException">작업에 대한 권한이 없습니다.</entry>	
+
+	<entry key="exception.message.FileNumberExcessException">파일 개수가 초과되었습니다.</entry>	
+	<entry key="exception.message.FileSizeExcessException">파일 크기가 초과되었습니다.</entry>	
+	<entry key="exception.message.FileSizeSumExcessException">파일 크기 합계가 초과되었습니다.</entry>	
+	<entry key="exception.message.NoAvailableFileSpaceException">파일을 저장할 공간이 없습니다.</entry>	
+</properties>

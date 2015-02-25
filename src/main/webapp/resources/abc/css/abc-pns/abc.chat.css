@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+
+.-chat-initializer {
+	margin-right: 15px;
+	margin-bottom: 15px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.chat-window {
+	/*position: fixed !important;*/
+}
+
+.chat-window .chat-titlebar {
+	
+}
+
+.chat-window .chat-titlebar .chat-presence {
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	margin-right: 3px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.chat-window .chat-titlebar .chat-title {
+	display: inline-block;
+	height: 16px;
+}
+
+.chat-window .chat-content {
+	
+}
+
+.chat-window .chat-content .chat-out-wrap {
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out {
+	white-space: pre;
+	word-break: break-word;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.write_pass {
+	text-align: center;
+	line-height: 18px;
+	height: 18px;
+	padding: 2px 0px;
+	background-color: #eee;
+	margin-top: 1em;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.my {
+	background-color: rgb(232, 243, 255);
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.write_pass:FIRST-CHILD {
+	margin-top: 0px !important;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.write_pass>.from {
+	float: left;
+	padding-left: .8em;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.write_pass>.ts {
+	float: right;
+	padding-right: .8em;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.t {
+	line-height: 18px;
+	border-top: 1px dashed #f1f1f1;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out>.write_pass+.t {
+	border-top: 0px;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out-bline {
+	text-align: center;
+	line-height: 16px;
+	height: 16px;
+}
+
+.chat-window .chat-content .chat-out-wrap .chat-out-bline .chat-state-text {
+	padding: 2px 0px;
+}
+
+.chat-window .chat-content .chat-in {
+	border-top: 1px solid #ccc;
+	padding-top: .58em;
+	position: relative;
+}
+
+.chat-window .chat-content .chat-in textarea {
+	width: 100%;
+}
+
+.chat-window .chat-content .chat-in textarea:FOCUS {
+	border-color: rgb(77, 144, 254);
+}
+
+/* 자동줄바꿈 */
+p.t {white-space:normal; word-break:break-all;}

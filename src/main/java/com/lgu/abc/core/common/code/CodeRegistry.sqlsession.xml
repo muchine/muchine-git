@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.code.CodeRegistry">
+	
+	<resultMap id="result" type="CodeEntity">
+		<id property="classId"	column="code.classId"/>
+		<id property="code" 	column="code.code"/>
+		
+		<result property="name"			column="code.name"/>
+		<result property="description"	column="code.description"/>
+		<result property="order"		column="code.order"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 cc.CMN_CD_DIV_CD	as "code.classId"
+		,cc.CMN_CD			as "code.code"
+		,cc.CMN_CD_NM		as "code.name"
+		,cc.CMN_CD_DSCRT	as "code.description"
+		,cc.HIT_ORDER		as "code.order"
+	</sql>
+	
+	<sql id="table">
+		from CMN_CD cc
+	</sql>
+	
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="findAll">
+		
+	</sql>
+	
+	<sql id="order">
+		order by cc.CMN_CD_DIV_CD, cc.CMN_CD, cc.HIT_ORDER
+	</sql>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	 	
+</mapper>

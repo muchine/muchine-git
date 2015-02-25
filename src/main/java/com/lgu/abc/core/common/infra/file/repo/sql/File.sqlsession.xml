@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.infra.file.File">
+
+	<resultMap id="result" type="com.lgu.abc.core.common.infra.file.File">
+		<id property="id"	column="attached.id"/>
+		
+		<result property="temp"					column="attached.temp"/>
+		<result property="expiredDate"			column="attached.expiredDate"/>
+		
+		<result property="log.registeredTime"	column="attached.registeredTime"/>
+		<result property="log.register"			column="attached.register"/>
+		<result property="log.modifiedTime"		column="attached.registeredTime"/>
+		<result property="log.modifier"			column="attached.register"/>
+		
+		<association property="ownable" resultMap="ownable"/>
+		<association property="property" resultMap="property"/>
+		<association property="volume" resultMap="volume"/>
+		<association property="link" resultMap="link"/>
+	</resultMap>
+	
+	<resultMap id="property" type="FileProperty">
+		<result property="name"		column="attached.property.name"/>
+		<result property="path"		column="attached.property.path"/>
+	</resultMap>
+	
+	<resultMap id="volume" type="FileVolume">
+		<result property="size"		column="attached.volume.size"/>
+		<result property="large"	column="attached.volume.large"/>
+	</resultMap>
+	
+	<resultMap id="link" type="FileLink">
+		<result property="link"			column="attached.link.link"/>
+		<result property="expiredDate"	column="attached.link.expiredDate"/>
+	</resultMap>
+	
+	<resultMap id="ownable" type="Owner">
+		<result property="user.id"	column="attached.userId"/>
+	</resultMap>
+		
+	<sql id="columns">
+		 ca.ATCH_FILE_SEQ		as "attached.id"
+		,ca.REG_USR_KEY			as "attached.userId"
+		,ca.SVR_FILE_PATH		as "attached.property.path"
+		,ca.ATCH_FILE_NM		as "attached.property.name"
+		,ca.ATCH_FILE_VOL		as "attached.volume.size"
+		,ca.LRG_VOL_YN			as "attached.volume.large"
+		,ca.DOWN_LINK_URL		as "attached.link.link"
+		,ca.LINK_EXPIRE_DTIME	as "attached.link.expiredDate"
+		,ca.TEMP_YN				as "attached.temp"
+		,ca.FILE_EXPIRE_DTIME	as "attached.expiredDate"
+		,ca.REG_DTIME			as "attached.registeredTime"
+		,ca.REG_USR_KEY			as "attached.register"
+	</sql>
+	
+	<sql id="count">
+		count(ca.ATCH_FILE_SEQ)
+	</sql>
+	
+	<sql id="table">
+		from CMN_ATCH_FILE ca
+	</sql>
+	
+	<sql id="join">
+
+	</sql>
+	
+	<sql id="whereOne">
+		where ATCH_FILE_SEQ = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where ca.ATCH_FILE_SEQ = #{id}
+	</sql>
+	
+	<sql id="whereAll">
+		where REG_USR_KEY = #{query.actor.id}
+	</sql>
+	
+	<sql id="findAll">
+		<where>
+			<if test="query.ownable != null">
+				REG_USR_KEY = #{query.ownable.id}
+			</if>
+		
+			<if test="query.link != null">
+				and DOWN_LINK_URL = #{query.link.link} and LINK_EXPIRE_DTIME >= #{query.link.expiredDate}
+			</if>
+			
+			<if test="query.path">
+				and SVR_FILE_PATH = #{query.path}
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+	
+	<insert id="create">
+		insert into CMN_ATCH_FILE (
+			 ATCH_FILE_SEQ
+			,ATCH_FILE_NM
+			,SVR_FILE_PATH
+			,ATCH_FILE_VOL
+			,LRG_VOL_YN
+			,DOWN_LINK_URL
+			,LINK_EXPIRE_DTIME
+			,TEMP_YN
+			,FILE_EXPIRE_DTIME
+			,REG_DTIME
+			,REG_USR_KEY
+		)
+		values(
+			 #{id}
+			,#{property.name}
+			,#{property.path}
+			,#{volume.size}
+			,#{volume.large}
+			,#{link.link}
+			,#{link.expiredDate}
+			,#{temp}
+			,#{expiredDate}
+			,#{log.registeredTime}
+			,#{log.register}
+		)
+	</insert>
+	
+	<update id="update">
+		update CMN_ATCH_FILE set
+			 SVR_FILE_PATH		= #{property.path}
+			,LRG_VOL_YN			= #{volume.large}
+			,DOWN_LINK_URL		= #{link.link}
+			,LINK_EXPIRE_DTIME	= #{link.expiredDate}
+			,TEMP_YN			= #{temp}
+			,FILE_EXPIRE_DTIME	= #{expiredDate}
+		<include refid="whereOne"/>
+	</update>
+	
+	<update id="shrink">
+		update CMN_ATCH_FILE set
+			 ATCH_FILE_VOL		= 0
+		<include refid="whereAll"/>
+	</update>
+		
+	<delete id="delete">
+		delete from CMN_ATCH_FILE
+		<include refid="whereOne"/>
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from CMN_ATCH_FILE
+		<include refid="whereAll"/>
+	</delete>
+	
+	<select id="exists" resultType="Integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>
+ 	
+ 	<select id="batchFindAllTempFiles" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		where ca.TEMP_YN = 'Y' and ca.FILE_EXPIRE_DTIME &lt; #{datetime}
+ 	</select>
+	
+	<delete id="batchDeleteAllTempFiles">
+ 		delete from CMN_ATCH_FILE 
+ 		where TEMP_YN = 'Y' and FILE_EXPIRE_DTIME &lt; #{datetime}
+ 	</delete>
+</mapper>

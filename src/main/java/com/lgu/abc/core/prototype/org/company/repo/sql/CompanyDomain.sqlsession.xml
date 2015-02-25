@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.company.CompanyDomain">
+
+	<resultMap id="result" type="CompanyDomain">
+		<id column="domain.company.id"/>
+		<id property="name"	column="domain.name"/>
+		
+		<result property="registeredTime"	column="domain.registeredTime"/>
+		
+		<result property="primary"	column="domain.primary"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 ucd.CORP_SEQ		as "domain.company.id"
+		,ucd.DOMN_NM		as "domain.name"
+		,ucd.BSIC_DOMN_YN	as "domain.primary"
+		,ucd.REG_DTIME		as "domain.registeredTime"
+	</sql>
+	
+	<sql id="count">
+			count(ucd.DOMN_NM)
+	</sql>
+		
+	<sql id="table">
+		from USR_CORP_DOMN ucd
+	</sql>
+		
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="findOne">
+		where ucd.CORP_SEQ = #{company.id} and ucd.DOMN_NM = #{name}
+	</sql>
+	
+	<sql id="findAll">
+		where ucd.CORP_SEQ = #{company.id}
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+		
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+ 	</select>
+ 	
+</mapper>

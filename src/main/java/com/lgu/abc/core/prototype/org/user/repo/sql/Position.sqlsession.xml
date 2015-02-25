@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.user.Position">
+
+	<resultMap id="result" type="Position">
+		<id property="id" column="position.id"/>
+
+		<result property="name"		column="position.name"/>
+		<result property="order"	column="position.order"/>
+	</resultMap>
+	
+	<sql id="columns">
+			 up.POS_SEQ			as "position.id"
+			,up.POS_NM			as "position.name"
+			,up.PARNT_GRP_ORDER	as "position.order"
+	</sql>
+	
+	<sql id="count">
+			count(up.POS_SEQ)
+	</sql>
+		
+	<sql id="table">
+		from USR_POS up
+	</sql>
+		
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="whereOne">
+		where POS_SEQ = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where up.POS_SEQ = #{id}
+	</sql>
+	
+	<sql id="findAll">
+		where up.CORP_SEQ = #{query.companyId}
+	</sql>
+	
+	<sql id="order">
+		order by up.PARNT_GRP_ORDER
+	</sql>
+		
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+ 	</select>
+ 	
+</mapper>

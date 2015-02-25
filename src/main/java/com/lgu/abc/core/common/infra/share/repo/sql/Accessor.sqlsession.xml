@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.infra.share.Accessor">
+
+	<resultMap id="result" type="Accessor">
+		<id column="accessor.id"/>
+		
+		<result property="privilege.read"		column="accessor.read"/>
+		<result property="privilege.write"		column="accessor.write"/>
+		<result property="privilege.manage"		column="accessor.manage"/>
+		<result property="shown"				column="accessor.shown"/>
+		
+		<result property="user.id"				column="accessor.userId"/>
+		<result property="department.id"		column="accessor.deptId"/>
+		<result property="company.id"			column="accessor.companyId"/>
+	</resultMap>
+	
+	<sql id="columns">
+			 cp.PWR_SEQ		as "accessor.id"
+			,cp.TGT_SEQ		as "accessor.entityId"
+			,cp.USR_KEY		as "accessor.userId"
+			,cp.DEPT_SEQ	as "accessor.deptId"
+			,cp.CORP_SEQ	as "accessor.companyId"
+			,cp.HIT_PWR_YN	as "accessor.read"
+			,cp.WRT_PWR_YN	as "accessor.write"
+			,cp.MGMT_PWR_YN	as "accessor.manage"
+			,cp.SHOW_YN		as "accessor.shown"
+	</sql>
+
+	<sql id="count">
+			count(cp.PWR_SEQ)
+	</sql>
+	
+	<sql id="table">
+		from CMN_PWR_INFO cp
+	</sql>
+	
+	<sql id="join">
+
+	</sql>
+	
+	<sql id="findOne">
+		where cp.PWR_SEQ = #{id}
+	</sql>
+	
+	<sql id="findAll">
+		where cp.TGT_SEQ = #{entityId}
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+	
+	<sql id="selectAll">
+		select
+		<include refid="com.lgu.abc.core.common.infra.share.Accessor.columns"/>
+		<include refid="com.lgu.abc.core.common.infra.share.Accessor.table"/>
+		<include refid="com.lgu.abc.core.common.infra.share.Accessor.join"/>
+ 		<include refid="com.lgu.abc.core.common.infra.share.Accessor.findAll"/>
+	</sql>
+	
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+		<include refid="selectAll"/>
+		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>
+ 	 	
+</mapper>

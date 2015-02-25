@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+/*===	표 기본 스타일			------------ 
+.tbl	{width:100%; border:1px solid #ccc; margin:1px auto; border-collapse:collapse;}
+		.tbl th	{padding:7px; background:#eee; border-bottom:1px solid #cbdff1; text-align:center; font:bold 13px 돋움,dotum,굴림,Gulim,Helvetica,AppleGothic,Tahoma,Verdana; color:#66a3d3;
+		}
+		.tbl td	{color:#678197; border-bottom:1px solid #ccc; border-left:1px solid #cbdff1; padding:7px; text-align:left;}
+*/
+	
+	
+body.Bo .tbl	{width:100%; border:1px solid #cbdff1; margin:1px auto; border-collapse:collapse;}
+		.tbl th	{padding:7px; background:#e9f3fd; border-bottom:1px solid #cbdff1; text-align:center; font:bold 13px 돋움,dotum,굴림,Gulim,Helvetica,AppleGothic,Tahoma,Verdana; color:#66a3d3;
+		}
+		.tbl td	{color:#678197; border-bottom:1px solid #cbdff1; border-left:1px solid #cbdff1; padding:7px; text-align:left;}
+
+	
+body.Bs .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Sv .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Uf .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Mt .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Bk .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Mb .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Hc .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+body.Ml .k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}

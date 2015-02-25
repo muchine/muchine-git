@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.infra.share.Authority">
+
+	<resultMap id="result" type="Authority">
+		<id property="id" column="power.id"/>
+		
+		<result property="tableName"			column="power.tableName"/>
+		<result property="entityId"				column="power.entityId"/>
+		
+		<result property="log.registeredTime"	column="calendar.registeredTime"/>
+		<result property="log.register"			column="calendar.register"/>
+		
+		<association property="accessor" javaType="Accessor" resultMap="com.lgu.abc.core.common.infra.share.Accessor.result" />
+	</resultMap>
+	
+	<sql id="columns">
+			 cp.PWR_SEQ		as "power.id"
+			,cp.TGT_TBL_NM	as "power.tableName"
+			,cp.TGT_SEQ		as "power.entityId"
+			,cp.REG_DTIME	as "power.registeredTime"
+			,cp.REG_USR_KEY	as "power.register"
+			,<include refid="com.lgu.abc.core.common.infra.share.Accessor.columns"/>
+	</sql>
+
+	<sql id="count">
+			count(cp.PWR_SEQ)
+	</sql>
+	
+	<sql id="table">
+		from CMN_PWR_INFO cp
+	</sql>
+	
+	<sql id="join">
+
+	</sql>
+	
+	<sql id="findOne">
+		where cp.PWR_SEQ = #{id}
+	</sql>
+	
+	<sql id="whereOne">
+		where PWR_SEQ = #{id}
+	</sql>
+	
+	<sql id="whereAll">
+		where TGT_SEQ = #{query.id} and TGT_TBL_NM = #{query.shareTableName}
+	</sql>
+	
+	<sql id="findAll">
+		<where>
+			<if test="query.tableName != null">
+				cp.TGT_TBL_NM = #{query.tableName}
+			</if>
+			
+			<if test="query.userId != null">
+				and cp.USR_KEY = #{query.userId}
+			</if>
+			
+			<if test="query.companyId != null">
+				and cp.CORP_SEQ = #{query.companyId}
+			</if>
+			
+			<if test="query.departmentIds != null and query.departmentIds.size() > 0">
+				and cp.DEPT_SEQ in
+				<foreach item="item" index="index" collection="query.departmentIds" open="(" separator="," close=")">#{item}</foreach>
+			</if>
+			
+			<if test="query.entityIds != null and query.entityIds.size() > 0">
+				and cp.TGT_SEQ in
+				<foreach item="item" index="index" collection="query.entityIds" open="(" separator="," close=")">#{item}</foreach>
+			</if>
+			
+			<if test="query.ids != null and query.ids.size() > 0">
+				and cp.PWR_SEQ in
+				<foreach item="item" index="index" collection="query.ids" open="(" separator="," close=")">#{item}</foreach>
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="findAllAccessible">
+		where cp.TGT_TBL_NM = #{query.tableName} and (
+				cp.USR_KEY = #{query.userId}
+			or	cp.CORP_SEQ = #{query.companyId}
+			or	cp.DEPT_SEQ in
+				<foreach item="item" index="index" collection="query.departmentIds" open="(" separator="," close=")">#{item}</foreach>
+		)
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+	
+	<insert id="create">
+		insert into CMN_PWR_INFO (
+			 PWR_SEQ
+			,TGT_TBL_NM
+			,TGT_SEQ
+			,USR_KEY
+			,DEPT_SEQ
+			,CORP_SEQ
+			,HIT_PWR_YN
+			,WRT_PWR_YN
+			,MGMT_PWR_YN
+			,SHOW_YN
+			,REG_DTIME
+			,REG_USR_KEY
+		)
+		values (
+			#{id},
+			#{tableName},
+			#{entityId},
+			#{accessor.user.id},
+			#{accessor.department.id},
+			#{accessor.company.id},
+			#{accessor.privilege.read},
+			#{accessor.privilege.write},
+			#{accessor.privilege.manage},
+			#{accessor.shown},
+			#{log.registeredTime},
+			#{log.register}
+		)
+	</insert>
+	
+	<update id="update">
+		update CMN_PWR_INFO set
+			 HIT_PWR_YN		= #{accessor.privilege.read}
+			,WRT_PWR_YN		= #{accessor.privilege.write}
+			,MGMT_PWR_YN	= #{accessor.privilege.manage}
+			,SHOW_YN		= #{accessor.shown}
+		<include refid="whereOne"/>
+	</update>
+	
+	<delete id="delete">
+		delete CMN_PWR_INFO
+		<include refid="whereOne"/>
+	</delete>
+	
+	<delete id="deleteAll">
+		delete CMN_PWR_INFO
+		<include refid="whereAll"/>
+	</delete>
+	
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllAccessible" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAllAccessible"/>
+		<include refid="order"/>
+ 	</select>
+
+</mapper>

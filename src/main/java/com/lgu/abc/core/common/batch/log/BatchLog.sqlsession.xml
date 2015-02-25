@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.batch.log.BatchLog">
+	
+	<resultMap id="result" type="BatchLog">
+		<id property="id" column="batch.id" />
+		
+		<result property="processId"		column="batch.processId" />
+		<result property="started"			column="batch.started" />
+		<result property="terminated"		column="batch.terminated" />
+		<result property="processResult"	column="batch.result" />
+		<result property="description"		column="batch.description" />
+	</resultMap>
+		
+	<sql id="columns">
+		 b.BAT_WORK_KEY	as "batch.id"
+		,b.BAT_PROC_ID	as "batch.processId"
+		,b.STRT_TIME	as "batch.started"
+		,b.END_TIME		as "batch.terminated"
+		,b.PROC_RSLT	as "batch.result"
+		,b.DSCRT		as "batch.description"
+	</sql>
+		
+	<sql id="count">
+		count(b.BAT_WORK_KEY)
+	</sql>
+	
+	<sql id="table">
+		from BATCH_LOG b
+	</sql>
+	
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="whereOne">
+		where BAT_WORK_KEY = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where b.BAT_WORK_KEY = #{id}
+	</sql>
+	
+	<sql id="whereAll">
+		where BAT_WORK_KEY = #{id}
+	</sql>
+	
+	<sql id="findAll">
+		<where>
+			<if test="query.started">
+				b.STRT_TIME &gt;= #{query.started}
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+	
+	<insert id="create">
+		insert into BATCH_LOG (
+			 BAT_WORK_KEY
+			,BAT_PROC_ID
+			,STRT_TIME
+			,END_TIME
+			,PROC_RSLT
+			,DSCRT
+		)
+		values (
+			 #{id}
+			,#{processId}
+			,#{started}
+			,#{terminated}
+			,#{processResult}
+			,#{description}
+		)
+	</insert>
+	
+	<select id="exists" resultType="Integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>
+
+</mapper>

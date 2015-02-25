@@ -1,0 +1,139 @@
+@CHARSET "UTF-8";
+
+.orgselected {
+	padding-top: 8px;
+}
+
+.orgselected-li-x {
+	cursor: pointer;
+	float: right;
+	margin-right: 8px;
+}
+
+/* ****************************************************
+OrgAutoComplete
+**************************************************** */
+div.orgautocomplete-wrap {
+	position: relative;
+	overflow: hidden;
+	padding: 0px 20px 0px 0px !important;
+	border: 1px solid #60a9f1;
+	/*min-width: 400px;*/
+	width: 100%;
+	background-image: none !important;
+	background-color: #fff !important;
+}
+
+ul.orgautocomplete-ul {
+	padding: 1px;
+	overflow: hidden;
+}
+
+li.newinput>div {
+	border-color: #fff !important;
+}
+
+li.orgautocomplete-li {
+	float: left;
+	padding-bottom: 1px;
+	padding-right: 2px;
+	white-space: nowrap;
+	height: 20px;
+	white-space: nowrap;
+}
+
+li.orgautocomplete-li * {
+	vertical-align: middle;
+}
+
+li.orgautocomplete-li>div {
+	line-height: 19px;
+	height: 19px;
+}
+
+li.orgautocomplete-li div.present-area {
+	border: 1px solid;
+}
+
+.newinput.orgautocomplete-li>div.present-area {
+	border: none;
+}
+
+li.orgautocomplete-li div.edit-area {
+	display: none;
+}
+
+li.orgautocomplete-li .k-autocomplete {
+	width: auto !important;
+	height: auto !important;
+	/*padding: 1px !important;*/
+}
+
+li.orgautocomplete-li .k-autocomplete input {
+	padding: 0px !important;
+	line-height: 15px !important;
+}
+
+li.orgautocomplete-li input {
+	border: 0px !important;
+}
+
+li.orgautocomplete-li .present-text {
+	margin-right: 5px;
+}
+
+li.orgautocomplete-li a {
+	padding: 0px 2px 1px 2px;
+	height: 8px;
+	display: inline-block;
+}
+
+li.orgautocomplete-li a.edit-btn img {
+	background:url(../images/edit-btn.png) no-repeat 0 0;
+	vertical-align: top;
+}
+
+li.orgautocomplete-li a.del-btn img {
+	background:url(../images/edit-btn.png) no-repeat -10px 0;
+	vertical-align: top;
+}
+
+
+li.orgautocomplete-li span {
+	/* 
+	vertical-align: top;
+	padding: 0px 2px 1px 2px;
+	height: 8px;
+	display: inline-block;
+	 */
+}
+
+li.orgautocomplete-li span.edit-btn img {
+	padding: 0px 2px 1px 0;
+	height: 8px;
+	display: inline-block;
+	background:url(../images/edit-btn.png) no-repeat 0 0;;
+	/* vertical-align: top; */
+}
+
+li.orgautocomplete-li span.del-btn img {
+	padding: 0px 2px 1px 0;
+	height: 8px;
+	display: inline-block;
+	background:url(../images/edit-btn.png) no-repeat -10px 0;
+	/* vertical-align: top; */
+}
+
+input.file-local-upload { 
+	position: absolute;
+	top: 0;
+	width: 50px;
+	height: 20px;
+	margin: 0;
+	padding: 0;
+	font: 15px monospace!important;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+}

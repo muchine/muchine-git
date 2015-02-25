@@ -1,0 +1,374 @@
+@CHARSET "UTF-8";
+@import url("./common.css");
+
+/*서브메뉴 폴더 아이콘*/
+.subMenulist_ico0 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -25px; padding-left:20px;}
+.subMenulist_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -198px; padding-left:20px;}
+.subMenulist_ico2 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -52px; padding-left:20px;}
+.subMenulist_ico3 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -77px; padding-left:20px;}
+.subMenulist_ico4 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -100px; padding-left:20px;}
+.subMenulist_ico5 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -125px; padding-left:20px;}
+.subMenulist_ico6 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -150px; padding-left:20px;}
+.subMenulist_ico7 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -216px; padding-left:20px;}
+.subMenulist_icoGarbg{float:right; width:12px; height:16px; background:url(../images/sub_menu_forderico.png) no-repeat -9px -175px; text-indent:-9999px; cursor:pointer}
+li:hover .subMenulist_icoGarbg {background:url(../images/sub_menu_forderico.png) no-repeat -26px -175px;}
+.subMenulist_icoGarbg._on {background:url(../images/sub_menu_forderico.png) no-repeat -26px -175px;}
+
+.subMenulist_sc_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -236px; width:15px; height:13px; margin-right:3px;}
+.subMenulist_sc_ico2 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -263px; width:15px; height:13px; margin-right:3px;}
+.subMenulist_sc_ico3 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -288px; width:15px; height:13px; margin-right:3px;}
+.subMenulist_sc_ico4 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -314px; width:15px; height:13px; margin-right:3px;}
+.subMenulist_sc_ico5 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -341px; width:15px; height:14px; margin-right:3px;}
+
+.subMenulist_sms_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -365px; padding: 0px 0 0 20px;}
+
+	/*팩스*/
+	.subMenulist_fax_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -388px; padding: 3px 0 0 20px;}
+	.subMenulist_fax_ico2 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -415px; padding: 3px 0 0 20px;}
+	.subMenulist_fax_ico3 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -439px; padding: 3px 0 0 20px;}
+
+	/*전자결재*/
+	.subMenulist_apr_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -484px; padding-left:20px;}
+	.subMenulist_apr_ico2 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -512px; padding-left:20px;}
+	.subMenulist_apr_ico3 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -537px; padding-left:20px;}
+	.subMenulist_apr_ico4 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -568px; padding-left:20px;}
+
+
+	/*근태관리*/
+	.subMenulist_wrk_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -594px; padding-left:20px;}
+	.subMenulist_wrk_ico2 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -620px; padding-left:20px;}
+	.subMenulist_wrk_ico3 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -652px; padding-left:20px;}
+
+
+.subMenulist_panel_ico1 {background:url(../images/sub_menu_forderico.png) no-repeat -7px -77px; padding-left:20px;background-repeat: no-repeat;}
+
+
+/*환경설정 아이콘*/
+.subMenuSett {float:left; display:block; width:18px; height:16px; background:url(../images/sub_settico.png) no-repeat; cursor:pointer;}
+.subMenuMailInfo {margin-top:20px; margin-bottom:-20px; padding:5px 10px; color:#000; border-top:1px solid #cfcfcf; background:url(../images/sub_menu_bg.png) #e7e7e7 right repeat-y;}
+.subMenuMailInfo_m {margin-top:20px; padding:5px 5px 8px 5px; border-top:1px solid #b3b3b3;  border-bottom:1px solid #b3b3b3; border-left:none; background:url(../images/sub_menu_bg.png) #d4d4d4 right repeat-y; color:#000;}
+.subMenuMailInfo_a {margin-top:20px; padding:5px 5px 8px 5px; border-left:none; color:#000;}
+	.subMenuMailInfo_a div b {font-weight:100;}
+
+li span.subMenuSett {margin-top:2px;}
+.settBtn {margin-top:2px;}
+
+
+/*입력창- 필수값표시*/
+.o-i-important {background:url(../images/important_ico.png) no-repeat 3px 2px; width:15px; height:15px;}
+
+
+	/*텍스트 까만세모 블릿*/
+	.textbullet b{ margin-top: 10px; padding: 0px 0px 8px 7px; background: url("/resources/abc/images/btn_ico_common.png") no-repeat scroll 0px -113px transparent;}
+	
+ 	/*텍스트 까만네모 블릿*/
+	.textbullet em {font-size:11px; background: url("/resources/abc/images/btn_ico_common.png") no-repeat scroll 0px -264px transparent; letter-spacing: 0px; color:#000;}
+	.textbullet._usrSrchBx em {display:block; margin:0 0 10px 10px;}
+
+
+/*서브메뉴 제목아이콘*/
+.sub_menuIco {display:inline-block;	*zoom:-1; *display:inline;background-repeat: no-repeat; width:23px; height:31px; text-indent:-9999px;}
+	.sub_menuIco.mail_s {background:url(../images/mw_icoall_ico.png) -13px -19px;}
+	.sub_menuIco.note_s {background:url(../images/mw_icoall_ico.png) -13px -62px;}
+	.sub_menuIco.sign_s {background:url(../images/mw_icoall_ico.png) -13px -102px;}
+	.sub_menuIco.notice_s {background:url(../images/mw_icoall_ico.png) -13px -150px;}
+	.sub_menuIco.cal_s {background:url(../images/mw_icoall_ico.png) -13px -206px;}
+	.sub_menuIco.cowork_s {background:url(../images/mw_icoall_ico.png) -13px -644px;}
+
+
+/*웹디스크 파일 아이콘*/
+.fileIcon {display:inline-block; width:16px; height:16px; background-repeat:no-repeat; text-indent:-9999px;}
+	.file_folder {background:url(../images/diskfile_ico.png) 0 -10px;}
+	.file_folder_share {background:url(../images/diskfile_ico.png) -258px -10px;}
+	.file_image {background:url(../images/diskfile_ico.png) -21px -10px;}
+	.file_zip {background:url(../images/diskfile_ico.png) -42px -10px;}
+	.file_hwp {background:url(../images/diskfile_ico.png) -63px -10px;}
+	.file_xls {background:url(../images/diskfile_ico.png) -83px -10px;}
+	.file_txt {background:url(../images/diskfile_ico.png) -104px -10px;}
+	.file_exe {background:url(../images/diskfile_ico.png) -125px -10px;}
+	.file_pdf {background:url(../images/diskfile_ico.png) -147px -10px;}
+	.file_html {background:url(../images/diskfile_ico.png) -170px -10px;}
+	.file_ppt {background:url(../images/diskfile_ico.png) -193px -10px;}
+	.file_ect {background:url(../images/diskfile_ico.png) -215px -10px;}
+	.file_doc {background:url(../images/diskfile_ico.png) -237px -10px;}
+
+
+/*게시판-아코디언메뉴 리스트 아이콘*/
+.brdlist_notice {background:url(../images/icon_bbs_notice.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_event {background:url(../images/icon_bbs_familyEvent.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_file{background:url(../images/icon_bbs_file.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_general{background:url(../images/icon_bbs_list.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_notice:hover{background:url(../images/icon_bbs_notice_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_event:hover{background:url(../images/icon_bbs_familyEvent_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_file:hover{background:url(../images/icon_bbs_file_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+.brdlist_general:hover{background:url(../images/icon_bbs_list_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+span.k-state-selected .brdlist_notice {background:url(../images/icon_bbs_notice_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+span.k-state-selected .brdlist_event {background:url(../images/icon_bbs_familyEvent_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+span.k-state-selected .brdlist_file {background:url(../images/icon_bbs_file_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+span.k-state-selected .brdlist_general {background:url(../images/icon_bbs_list_on.png) no-repeat 0 3px; padding-left:18px; padding-top:2px;}
+
+/*공용설비-아코디언메뉴 리스트 아이콘*/
+.eqmlist {background:url(../images/eqmlist_ico.png) no-repeat 0 3px; padding-left:18px;}
+
+
+/*오르고스 아이콘*/
+.o-icon{
+	display:inline-block;
+	*zoom:-1;
+	*display:inline;
+	width:16px;
+	height:16px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	font-size: 0px;
+	line-height: 0;
+	text-indent: -9999px;
+	text-align: center;
+	vertical-align: middle;
+	border-color: transparent;
+	background-color: transparent;
+	}
+button {border:0;}
+.o-Btn-margin {margin-right:5px;}
+
+
+/*추가아이콘*/
+
+.k-i-folder-up2{ background:url(../images/add-icon/sub_ico_Df_folder_up.png) no-repeat 3px 3px;}
+.k-i-refresh{background:url(../images/add-icon/ico_btn_Df_refresh.png) no-repeat;}
+.o-i-refresh{background:url(../images/add-icon/ico_btn_Df_refresh.png) no-repeat 50% 50%;}
+.k-i-group{background:url(../images/add-icon/ico_btn_Df_group.png) no-repeat;}
+
+.o-i-errorMessege {background:url(../images/ico_errorMessege.png) no-repeat 50% 50%; width:77px; height:69px;}
+.o-i-plus {background:url(../images/sub_panel_addico.png) no-repeat 0 2px;}
+.o-listDelete {margin-top:0px; width:14px; height:14px; background:url(../images/sub_pop_btn_delete.png) no-repeat 0 0; text-indent:-9999px; cursor:pointer;}
+.o-listDelete:hover {background:url(../images/sub_pop_btn_delete.png) no-repeat -14px 0; }
+
+
+
+.o-i-fileList {background:url(../images/mai/ico_maillist_file.png) no-repeat; width:13px; height:17px;}/*상세보기 첨부파일된 리스트-다운로드용*/
+.o-i-fileAdd {display:inline-block; *display:inline; zoom:1; width:14px; height:14px; background:url(../images/mai/ico_file_add.png) no-repeat 0 0;}
+.o-i-min-fileList {background:url(../images/brd/ico_notice.png) no-repeat; width:13px; height:17px; }/*상세보기 첨부파일된 리스트-뷰*/
+.o-i-print {width:14px; height:14px; background:url(../images/mai/ico_btn_print.png) no-repeat 0 0;  text-indent:-9999px}
+.o-i-send {width:14px; height:16px; background:url(../images/mai/ico_btn_send.png) no-repeat 0 3px; vertical-align:top;}
+.o-i-list {width:10px; height:10px; background:url(../images/sub_ico_list.png) no-repeat 0 0;}
+.o-i-restore {width:15px; height:12px; background:url(../images/sub_ico_restore.png) no-repeat 0 0;}
+.o-i-layalert {background:url(../images/ico_layalert.png) no-repeat left top; width:26px; height:23px;}/*경고알림창*/
+.o-i-layinform {background:url(../images/ico_layinform.png) no-repeat left top; width:26px; height:23px;}/*경고알림창-녹색*/
+.o-i-layalert_q {background:url(../images/ico_layalert_q.png) no-repeat left top; width:23px; height:23px;}/*경고알림창2*/
+.o-i-emphasis {background:url(../images/mai/ico_maillist_important.png) no-repeat; width:20px; height:15px;}/*중요표시*/
+
+.o-i-tag {background:url(../images/ico_tag.png) no-repeat left bottom; width:21px; height:11px; /*vertical-align:bottom;*/} /*태그*/
+.o-i-coment-re {background:url(../images/ico_coment-re.png) no-repeat; width:13px; height:12px;}
+.o-i-edit {background:url(../images/usr/ico_edit.png) no-repeat; width:16px; height:16px; cursor:pointer;}/*편집 회색*/
+.o-i-edit:hover {background:url(../images/usr/ico_edit_r.png) no-repeat;}/*편집 회색 오버*/
+.o-i-view-minu {display:inline-block; background:url(../images/mai/ico_btn_minu.png) no-repeat; width:14px; height:14px; text-indent:-9999px; cursor:pointer}/*더보기 (-) 아이콘*/
+.o-i-view-plus {display:inline-block; background:url(../images/mai/ico_btn_plus.png) no-repeat; width:14px; height:14px; text-indent:-9999px; cursor:pointer}/*더보기 (+) 아이콘*/
+.o-i-co-folder {background:url(../images/ico_co_folder.png) no-repeat; width:16px; height:16px;}
+.o-i-Qnew {background:url(../images/sve/ico_q.png) no-repeat; width:20px; height:20px; }/*설문조사 아이콘*/
+.o-i-sve-close {background:url(../images/sve/btn_close.png) no-repeat -2px -1px; width:17px; height:17px; text-indent:-9999px; cursor:pointer}/*설문조사 항목닫기*/
+.o-i-sve-close:hover {background:url(../images/sve/btn_close.png) no-repeat -22px -1px;}/*설문조사 항목닫기over*/
+.o-i-sve-start {background:url(../images/sve/ico_start.png) no-repeat; width:14px; height:14px;}/*설문조사 시작연필*/
+.o-i-sve-imgview {background:url(../images/sve/ico_imgview.png) no-repeat; width:14px; height:12px;}/*설문조사 이미지보기*/
+
+.o-i-wrt_adr {background:url(../images/ico_wrt_adr.png) no-repeat; width:14px; height:13px;}/*주소록아이콘*/
+.o-i-wrt_org {background:url(../images/ico_wrt_org.png) no-repeat; width:14px; height:13px;}/*조직도주소록아이콘*/
+.o-i-wrt_cal {background:url(../images/ico_wrt_cal.png) no-repeat; width:14px; height:13px;}/*약속일정 추가 아이콘*/
+
+/*부가설명 및 텍스트 앞 약물*/
+.o-i-listitem_li {display:block; float:left; width:10px; height:20px; background:url(../images/btn_ico_common.png) no-repeat 0 -114px;}
+
+/*다수보기 리스트 열기 버튼(Down Arrow)*/
+.o-i-wklistDown {background:url(../images/sub_menu_btn.png) no-repeat -44px -102px; width:25px; height:25px; cursor:pointer}
+.o-i-wklistDown:hover {background:url(../images/sub_menu_btn.png) no-repeat -72px -102px;}
+
+/*다수보기 리스트 열기 버튼(Up Arrow)*/
+.o-i-wklistUp {background:url(../images/sub_menu_btn.png) no-repeat -99px -102px; width:25px; height:25px; cursor:pointer}
+.o-i-wklistUp:hover {background:url(../images/sub_menu_btn.png) no-repeat -127px -102px;}
+
+/*새창 아이콘*/
+.o-i-newwin {background:url(../images/ico_newwin.png) no-repeat; width:13px; height:13px;}
+
+/*메일,쪽지 아이콘*/
+.o-i-star {width:14px; height:16px; background:url(../images/mai/ico_maillist_star_r.png) no-repeat 1px 2px;}
+.o-i-mail {width:14px; height:14px; margin-left:2px; background:url(../images/mai/ico_maillist_mail_r.png) no-repeat 0 0;}
+.o-i-fileLink {width:14px; height:14px; background:url(../images/mai/ico_maillist_link_r.png) no-repeat 0 0; vertical-align:bottom}
+.o-i-talk {width:14px; height:14px; background:url(../images/mai/ico_maillist_talk_r.png) no-repeat 0 0;}
+
+.o-i-star_n {width:14px; height:16px; background:url(../images/mai/ico_maillist_star.png) no-repeat 0 2px; }
+.o-i-mail_n {width:15px; height:16px; background:url(../images/mai/ico_maillist_mail.png) no-repeat 1px 0;}/*읽은메일*/
+.o-i-mail_s_n {width:15px; height:16px; background:url(../images/mai/ico_maillist_mail.png) no-repeat 1px -17px;}/*답장한메일*/
+.o-i-mail_j_n {width:15px; height:16px; background:url(../images/mai/ico_maillist_mail.png) no-repeat 1px -35px;}/*전달한메일*/
+
+
+
+.o-i-fileLink_n {width:14px; height:14px; background:url(../images/mai/ico_maillist_link.png) no-repeat 0 0; vertical-align:bottom}
+.o-i-talk_n {width:14px; height:14px; background:url(../images/mai/ico_maillist_talk.png) no-repeat 0 0;}
+
+
+/*저장,다운로드*/
+.o-i-save {width:14px; height:14px; background:url(../images/work/ico_save.png) no-repeat 0 0;}
+.o-i-new {width:11px; height:12px; background:url(../images/sub_ico_new.png) no-repeat -2px -4px;}
+.o-i-newfile {width:11px; height:12px; background:url(../images/sub_ico_new.png) no-repeat -15px -4px;}
+.o-i-ncomment {margin-left: 5px; padding-right: 2px; width:11px; height:12px; background:url(../images/sub_ico_new.png) no-repeat -28px -4px;}
+.o-i-lock {width:18px; height:15px; background:url(../images/sub_ico_lock.png) no-repeat 0 0;}
+.o-i-unlock {width:18px; height:15px; background:url(../images/sub_ico_unlock.png) no-repeat 0 0;}
+
+
+/*조직도 서브메뉴*/
+.o-i-uploadOrg {width:14px; height:14px; background:url(../images/webdisk/ico_upload.png) no-repeat 0 0;}
+.btnQuickWrite-line {position:absolute; left:100px; top:0; width:2px; height:38px; background:url(../images/sub_menu_btn_line.png) no-repeat left top;}
+
+/*업무관리 댓글,변경내역.///조직도 아이콘*/
+.o-i-man {width:13px; height:12px; background:url(../images/usr/ico_user.png) no-repeat 0 0;}
+.o-i-mans {width:16px; height:12px; background:url(../images/usr/ico_dept.png) no-repeat 0 0;}
+.o-i-manFolder {width:12px; height:11px; background:url(../images/usr/ico_crop.png) no-repeat 0 0;}
+.o-i-pen {width:14px; height:15px; background:url(../images/usr/ico_pen.png) no-repeat 0 0;}
+.o-i-pen2 {width:14px; height:14px; background:url(../images/btn_ico_common.png) no-repeat -2px -382px;}
+.o-i-cencel {width:14px; height:14px; background:url(../images/btn_ico_common.png) no-repeat -2px -406px;}
+.o-i-ok {width:18px; height:14px; background:url(../images/btn_ico_common.png) no-repeat -2px -429px;}
+.o-i-re {width: 15px; height:10px; background: url(../images/btn_ico_common.png) 0px -208px no-repeat transparent;}
+
+/*팝업레이어 메세지아이콘*/
+.o-i-alam {width:25px; height:25px; margin-right:5px; background:url(../images/sub_pop_ico_messege.png) no-repeat 0 0;}
+
+/*실행메세지 아이콘*/
+.o-i-am-icon {display:inline-block; *display:inline; zoom:1; margin-right:.38em;}
+.o-i-am-note {background:url(../images/sub_alertMessege_note.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-am-mail {background:url(../images/sub_alertMessege_mail.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-am-messege {background:url(../images/sub_alertMessege_messege.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-am-sign {background:url(../images/sub_alertMessege_sign.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-am-cal {background:url(../images/sub_alertMessege_cal.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-am-todo {background:url(../images/sub_alertMessege_todo.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-am-add {background:url(../images/sub_alertMessege_add.png) no-repeat 0 0;width:17px;height:16px;}
+.o-i-img {background:url(../images/sub_alertMessege_img.png) no-repeat 0 0; width:16px; height:16px; vertical-align:middle}/*알림느낌표아이콘*/
+
+/*검색 전화*/
+.o-i-tel {background:url(../images/srch_tel.png) no-repeat; width:14px; height:10px; vertical-align:top; margin-top:5px}
+
+/*실행메세지 텍스트*/
+.o-i-am-textbox {text-align:center;vertical-align:top;line-height:16px;}
+
+/*주요 버튼*/
+.mailsendBtn {	display: inline-block;
+				vertical-align: middle;
+				margin: 0px;
+				padding: 1px 7px 2px;
+				font-size: 100%;
+				font-family: inherit;
+				line-height: 1.66em;
+				text-align: center;
+				cursor: pointer;
+				text-decoration: none;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				color:#fff;
+				font-weight:bold;
+				}
+
+
+
+
+/*화면분할버튼*/
+.o-i-sortCommon{float:left; width:25px; height:25px; cursor:pointer; text-indent:-9999px;}
+.o-i-sortHorizontal{float:left; width:25px; height:25px;  cursor:pointer; text-indent:-9999px;}
+.o-i-sortVertical{float:left; width:25px; height:25px; cursor:pointer; text-indent:-9999px;}
+.o-i-sortCommon:hover{float:left; width:25px; height:25px; text-indent:-9999px;}
+.o-i-sortHorizontal:hover{float:left; width:25px; height:25px; text-indent:-9999px;}
+.o-i-sortVertical:hover{float:left; width:25px; height:25px; text-indent:-9999px;}
+.o-i-sortCommon:active {float:left; width:25px; height:25px; text-indent:-9999px;}
+.o-i-sortHorizontal:active{float:left; width:25px; height:25px; text-indent:-9999px;}
+.o-i-sortVertical:active{float:left; width:25px; height:25px; text-indent:-9999px;}
+
+
+/*리스트 목록보기, 좌우넘기기 버튼
+.o-i-sortPre{float:left; width:24px; height:25px; background:url(../images/sub_listbtn.png) no-repeat 0 0; cursor:pointer; text-indent:-9999px;}
+.o-i-sortList{float:left; width:25px; height:25px; background:url(../images/sub_listbtn.png) no-repeat -25px 0; cursor:pointer; text-indent:-9999px;}
+.o-i-sortNext{float:left; width:24px; height:25px; background:url(../images/sub_listbtn.png) no-repeat -49px 0; cursor:pointer; text-indent:-9999px;}
+.o-i-sortPre:hover{background:url(../images/sub_listbtn.png) no-repeat 0 -28px;}
+.o-i-sortList:hover{background:url(../images/sub_listbtn.png) no-repeat -24px -28px;}
+.o-i-sortNext:hover{background:url(../images/sub_listbtn.png) no-repeat -49px -28px;}
+.o-i-sortPre:active {background:url(../images/sub_listbtn.png) no-repeat 0 -56px;}
+.o-i-sortList:active{background:url(../images/sub_listbtn.png) no-repeat -24px -56px;}
+.o-i-sortNext:active{background:url(../images/sub_listbtn.png) no-repeat -49px -56px;}
+*/
+
+/*파일아이콘*/
+.file_ico_outlook {background:url(../images/file_icon/ico_outlook.png) no-repeat; width:16px; height:16px;}
+.file_ico_express {background:url(../images/file_icon/ico_express.png) no-repeat; width:16px; height:16px;}
+.file_ico_excel   {background:url(../images/file_icon/ico_excel.png) no-repeat; width:16px; height:16px;}
+
+/*위젯 닫기버튼*/
+.wg_close {background:url(../images/sub_menu_btn.png) no-repeat -51px -144px; width:13px; height:13px; cursor:pointer; text-indent:-9999px}
+.wg_close:hover {background:url(../images/sub_menu_btn.png) no-repeat -72px -144px;}
+
+/*마이웍-이야기 구분표시 아이콘*/
+.mw_i_mail {background-color:#ef502a; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_note {background-color:#23c5bd; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px; }
+.mw_i_approval {background-color:#fdcb35; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_board {background-color:#42c37b; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_calendar {background-color:#a5d043; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_journal {background-color:#9879dd; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_str {background-color:#82b4f5; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_friend {background-color:#595eff; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+.mw_i_webdisk {background-color:#acacac; padding:2px 3px 3px 2px; color:#fff; font-size:11px; border-radius:2px;}
+
+
+									  
+									  
+/*3개버튼 텍스트 패딩*/
+.multiBTn_text {padding:0 4px;}							  
+									  
+
+
+/*약물*/
+	.approvalOpinionCode0 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#f38405;}/*수정(주황)*/
+	.approvalOpinionCode1 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#69F;}/*기안(파랑)*/
+	.approvalOpinionCode2 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#9FC93C;}/*승인(초록)*/
+	.approvalOpinionCode3 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#FFBB00;}/*합의(노랑)*/
+	.approvalOpinionCode4 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#F66;}/*반려(빨강)*/
+	.approvalOpinionCode5 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#9FC93C;}/*전결(초록)*/
+	.approvalOpinionCode6 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#FFBB00;}/*접수(노랑)*/
+	.approvalOpinionCode7 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#A566FF;}/*수신(보라)*/
+	.approvalOpinionCode8 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#F66;}/*전단계반려(빨강)*/
+	.approvalOpinionCode9 {padding:0px 5px 2px 5px; border-radius:3px; color:#fff; background-color:#aeb2bd;}/*회수(흑색)*/
+
+	/*미승인, 회원 상태표시*/
+	.approved {display:block; width:40px; font-size:11px; margin:auto; background-color:#ff9900; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; padding:0 0 2px 0;}/*승인*/
+	.approved-btn {display:block; width:40px; font-size:11px; margin:auto; background-color:#ff9900; color:#fff; border:1px solid #ff9900;
+					border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer; padding:0 0 2px 0;;}/*승인버튼*/
+	.approved-btn:hover {background-color:#da8300; border:1px solid #da8300;}
+	.unapproved {display:block; width:48px; font-size:11px; margin:auto; background-color:#ff7800; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; padding:2px 0 2px 0;}/*미승인*/
+	.unapproved-btn {display:block; width:40px; font-size:11px; margin:auto; line-height:1.5em; background-color:#8ebc00; color:#fff; border:1px solid #7ea700; padding:0 0 2px 0; border-radius:3px; 
+					-moz-border-radius:3px; -webkit-border-radius:3px; cursor:pointer}/*미승인버튼*/
+	.unapproved-btn:hover {background-color:#779d00; border:1px solid #7ea700;}
+	.approve_ing {display:block; width:40px; font-size:11px; margin:auto; line-height:1.5em; background-color:#f38405; color:#fff; border:1px solid #e17800; padding:0 0 2px 0; border-radius:3px; 
+					-moz-border-radius:3px; -webkit-border-radius:3px; cursor:pointer}/*진행중*/
+	.approve_ing:hover {background-color:#e17800; border:1px solid #ca3002;}
+	.unapproved_return {display:block; width:40px; font-size:11px; margin:auto; background-color:#aeb2bd; color:#fff; padding:0 0 2px 0;border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px}/*반려*/
+	.unapproved_return-btn {padding:4px 10px 1px 10px; background-color:#00b696; color:#fff; border:1px solid #00b696;padding:0 0 2px 0;
+							 border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer}/*반려버튼*/
+	.unapproved_return-btn:hover {background-color:#009379; border:1px solid #009379;}
+	.ap_collect {display:block; width:40px; font-size:11px; margin:auto; background-color:#177cc2; padding:0 0 2px 0;color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px}/*회수*/
+	.ap_collect-btn {display:block; width:40px; font-size:11px; margin:auto; background-color:#00b0ea; color:#fff; border:1px solid #00b0ea;padding:0 0 2px 0;
+							 border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px; box-shadow:inset 0 1px 1px rgba(255,255,255,0.6); cursor:pointer}/*회수버튼*/
+	.ap_collect-btn:hover {background-color:#0098ca; border:1px solid #0098ca;}
+	.approve {display:block; width:40px; font-size:11px; margin:auto;padding:0 0 2px 0; background-color:#8a64ff; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px} /*회원*/
+	.approve_complete {display:block; width:40px; font-size:11px; margin:auto;padding:0 0 2px 0; background-color:#ac725e; color:#fff; border-radius:3px;-moz-border-radius:3px; -webkit-border-radius:3px}/*완료*/ 
+	
+	/*권한 표시*/
+	.shareQ-read {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#9a9cff; color:#fff; font-weight:bold; text-align:center}
+		.shareMng em {display:none}
+	.shareQ-write {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#cd74e6; color:#fff; font-weight:bold; text-align:center}
+	.shareQ-manager {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#f691b2; color:#fff; font-weight:bold; text-align:center}
+	.shareQ-off {width:60px; padding:3px 3px 2px 3px; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; background-color:#c2c2c2; color:#fff; font-weight:bold; text-align:center}
+
+
+
+/*업무관리 조직도 추가 리스트 수정삭제버튼*/
+.edit-btn1 {display:inline-block; *zoom:1; background:url(../images/edit-btn.png) no-repeat 0 0; width:10px; height:10px;cursor: pointer;}
+.del-btn1 {display:inline-block; *zoom:1; background:url(../images/edit-btn.png) no-repeat -10px 0; width:10px; height:10px;cursor: pointer;}
+
+/*공통 점 표시*/
+.commonPointView{padding-left: 11px; background:url(../images/btn_ico_common.png) no-repeat 0 -236px; letter-spacing: -1px;}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.department.Department">
+
+	<resultMap id="result" type="Department">
+		<id property="id" column="dept.id"/>
+		
+		<result property="name"		column="dept.name"/>
+		<result property="order"	column="dept.order"/>
+		<result property="virtual"	column="dept.virtual"/>
+				
+		<association property="company" resultMap="com.lgu.abc.core.prototype.org.company.Company.result"/>
+		<association property="parent" resultMap="parent"/>
+	</resultMap>
+	
+	<resultMap id="parent" type="Department">
+		<id property="id"	column="dept.parent"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 ud.DEPT_SEQ		as "dept.id"
+		,ud.DEPT_NM			as "dept.name"
+		,ud.CORP_SEQ		as "dept.company.id"
+		,ud.PARNT_DEPT_SEQ	as "dept.parent"
+		,isnull(ud.TOP_SORT_ORDER, ud.PARNT_GRP_ORDER) as "dept.order"
+		,ud.PARNT_GRP_ORDER	as "dept.order"
+		,ud.VIRT_DEPT_YN	as "dept.virtual"
+		,ud.TOP_SORT_ORDER	as "dept.top.order"
+		,<include refid="com.lgu.abc.core.prototype.org.company.Company.columns"/>
+	</sql>
+	
+	<sql id="count">
+		count(distinct(ud.DEPT_SEQ))
+	</sql>
+		
+	<sql id="table">
+		from USR_DEPT ud
+	</sql>
+		
+	<sql id="join">
+		left join USR_CORP uc on ud.CORP_SEQ = uc.CORP_SEQ
+		<include refid="com.lgu.abc.core.prototype.org.company.Company.join"/>
+	</sql>
+	
+	<sql id="whereOne">
+		where DEPT_SEQ = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where ud.DEPT_SEQ = #{id}
+	</sql>
+	
+	<sql id="whereAll">
+		where CORP_SEQ = #{actor.company.id}
+	</sql>
+	
+	<sql id="findAll">
+		where ud.CORP_SEQ = #{query.companyId}
+		
+		<if test="query.parentId">
+			and ud.PARNT_DEPT_SEQ = #{query.parentId}
+		</if>
+		
+		<if test="query.name">
+			and ud.DEPT_NM = #{query.name}
+		</if>
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+		
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+ 	</select>
+ 	
+</mapper>

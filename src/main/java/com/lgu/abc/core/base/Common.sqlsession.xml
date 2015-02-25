@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.common">
+
+	<sql id="queryWorkspaces">
+		<if test="query.workspaces != null and query.workspaces.size() > 0">
+	        or WS_SEQ in 
+	        <foreach item="item" index="index" collection="query.workspaces" open="(" separator="," close=")">
+				#{item}
+		    </foreach>
+		</if>
+	</sql>
+	
+	<sql id="queryDeleted">
+		<if test="query.deleted != null">
+	        and DEL_YN = #{query.deleted}
+		</if>
+	</sql>
+	
+	<sql id="paginationHeader">
+		select * 
+			from (
+	</sql>
+	
+	<sql id="paginationFooter">
+		) X 
+		<where>
+			<if test="query.pageable != null">
+				ROW_NUM &gt; (#{query.pageable.pageNumber} * #{query.pageable.pageSize}) and 
+				ROW_NUM &lt;= ((#{query.pageable.pageNumber} + 1) * #{query.pageable.pageSize})
+			</if>			
+		</where>
+		order by ROW_NUM
+	</sql>
+
+</mapper>

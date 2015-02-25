@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+
+/*--- 사용자 프로필 레이어 --- */
+.layProfile {display:none;}
+.layProfile {position:absolute; top:0px; left:0px; width:340px; height:125px; border:1px solid #ccc; background-color:#fff; z-index:100000;}
+.layProfile span {display:block;}
+
+.layPf_header 	 {height:21px; padding:10px 0 0 5px; font-weight:bold; background:url(../../images/userProfile_topbg.png) repeat-x top; border-bottom:1px solid #ccc}
+.layPf_body 	 {position:relative; padding:5px; border-top:none;}
+	#layPf_pic_onff {position:absolute; top:6px; left:5px; width:14px; height:82px; background-color:#ececec;}
+					/* background-color-on : #fead11,  background-color-off : #ececec ?? */
+	#layPf_pic_img  {position:absolute; top:6px; left:19px; width:82px; height:82px;}
+
+.layPf_body_conts  	{padding-left:105px; border}
+	#layPf_state_onff {margin-bottom:7px; padding-top:5px; font-weight:bold; color:#ccc;}
+					/* color-on : #ff8706,  color-off : #ccc ?? */
+	#layPf_info_txt	{margin-bottom:7px; color:#999; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;}
+	#layPfInfoPhone {margin-bottom:7px; padding-top:5px;}
+	#layPfInfoMail	{margin-bottom:7px; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;}
+	#layPf_info_txt strong {font-weight:bold; color:#000;}
+	.layPf_body_conts .layPf_btn 		{width:220px; height:24px; padding:6px 0 0 0; border-top:1px solid #ccc; overflow:hidden;}
+	.layPf_body_conts .layPf_btn button	{float:left; width:24px; height:24px; margin-right:8px; padding-top:24px; overflow:hidden;}
+	
+	
+	.layPf_btn ._note		{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat 0 0;}
+	.layPf_btn ._mail 		{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat -35px 0;}
+	.layPf_btn ._Message	{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat -69px 0;}
+	.layPf_btn ._calendar	{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat -102px 0;}
+	.layPf_btn ._phone		{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat -136px 0;}
+	.layPf_btn ._add		{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat -170px 0;}
+	.layPf_btn ._sms		{background:url(../../images/userProfile_ico_funtBtn.png) no-repeat -202px 0;}
+	
+	.layPf_btn ._note:hover		{background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat 0 0;}
+	.layPf_btn ._mail:hover		{background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat -35px 0;}
+	.layPf_btn ._Message:hover	{background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat -69px 0;}
+	.layPf_btn ._calendar:hover {background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat -102px 0;}
+	.layPf_btn ._phone:hover	{background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat -136px 0;}
+	.layPf_btn ._add:hover		{background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat -170px 0;}
+	.layPf_btn ._sms:hover		{background:url(../../images/userProfile_ico_funtBtn_r.png) no-repeat -202px 0;}
+	
+	
+/*--- 주소록 사용자 프로필 레이어 --- */
+#layProfileAdr {width:340px;}
+	#layPfAdr_pic_onff 	{position:absolute; top:6px; left:5px; width:14px; height:82px; background-color:#ececec;}
+	#layPfAdr_pic_img  	{position:absolute; top:6px; left:19px; width:82px; height:82px;}
+	
+#layProfileAdr .layPf_body_conts .layPf_btn {width:220px; height:24px; padding:6px 0 0 0; border-top:1px solid #ccc; overflow:hidden;}
+	#layPfAdr_state_onff 	  {margin-bottom:7px; padding-top:5px; font-weight:bold; color:#ccc;}
+							  /* color-on : #ff8706,  color-off : #ccc ?? */
+	#layPfAdr_info_txt		  {margin-bottom:7px; color:#999; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;}
+	#layPfAdr_info_txt strong {font-weight:bold; color:#000;}
+
+	

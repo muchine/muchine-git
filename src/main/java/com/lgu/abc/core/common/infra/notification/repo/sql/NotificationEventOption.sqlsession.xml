@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.infra.notification.NotificationEventOption">
+	
+	<resultMap id="result" type="NotificationEventOption">
+		<id property="id" column="notification.userId"/>
+		<id column="notification.event.name"/>
+				
+		<result property="log.registeredTime"	column="notification.registeredTime"/>
+		<result property="log.register"			column="notification.register"/>
+		<result property="log.modifiedTime"		column="notification.modifiedTime"/>
+		<result property="log.modifier"			column="notification.modifier"/>
+		
+		<association property="ownable" resultMap="ownable"/>
+		<association property="event" resultMap="event"/>
+		<association property="channel" resultMap="channel"/>
+	</resultMap>
+	
+	<resultMap id="ownable" type="Owner">
+		<result property="user.id"		column="notification.userId"/>
+	</resultMap>
+	
+	<resultMap id="event" type="NotificationEvent">
+		<result property="name"			column="notification.event.name"/>
+		<result property="description"	column="notification.event.description"/>
+	</resultMap>
+	
+	<resultMap id="channel" type="NotificationChannelSet">
+		<result property="mail"			column="notification.channel.mail"/>
+		<result property="sms"			column="notification.channel.sms"/>
+		<result property="note"			column="notification.channel.note"/>
+		<result property="messenger"	column="notification.channel.messenger"/>
+		<result property="web"			column="notification.channel.web"/>
+		<result property="push"			column="notification.channel.push"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 ne.USR_KEY			as "notification.userId"
+		,ne.NOTI_EVNT		as "notification.event.name"
+		,ne.NOTI_EVNT_DSCRT	as "notification.event.description"
+		,ne.MAIL_YN			as "notification.channel.mail"
+		,ne.SMS_YN			as "notification.channel.sms"
+		,ne.NOTE_YN			as "notification.channel.note"
+		,ne.MSNG_YN			as "notification.channel.messenger"
+		,ne.WEB_YN			as "notification.channel.web"
+		,ne.PUSH_YN			as "notification.channel.push"
+		,ne.REG_DTIME		as "notification.registeredTime"
+		,ne.REG_USR_KEY		as "notification.register"
+		,ne.MOD_DTIME		as "notification.modifiedTime"
+		,ne.MOD_USR_KEY		as "notification.modifier"
+	</sql>
+	
+	<sql id="count">
+		count(ne.USR_KEY)
+	</sql>
+	
+	<sql id="table">
+		from USR_NOTI_WAY_CNFG ne
+	</sql>
+	
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="whereOne">
+		where USR_KEY = #{actor.id} and NOTI_EVNT = #{event.name}
+	</sql>
+	
+	<sql id="findOne">
+		where ne.USR_KEY = #{actor.id} and NOTI_EVNT = #{event.name}
+	</sql>
+	
+	<sql id="whereAll">
+		where USR_KEY = #{actor.id}
+	</sql>
+	
+	<sql id="findAll">
+		where ne.USR_KEY = #{query.actor.id}
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+	
+	<insert id="create">
+		insert into USR_NOTI_WAY_CNFG (
+			 USR_KEY
+			,NOTI_EVNT
+			,NOTI_EVNT_DSCRT
+			,MAIL_YN
+			,SMS_YN
+			,NOTE_YN
+			,MSNG_YN
+			,WEB_YN
+			,PUSH_YN
+			,REG_DTIME
+			,REG_USR_KEY
+			,MOD_DTIME
+			,MOD_USR_KEY
+		)
+		values (
+			 #{ownable.id}
+			,#{event.name}
+			,#{event.description}
+			,#{channel.mail}
+			,#{channel.sms}
+			,#{channel.note}
+			,#{channel.messenger}
+			,#{channel.web}
+			,#{channel.push}
+			,#{log.registeredTime}
+			,#{log.register}
+			,#{log.modifiedTime}
+			,#{log.modifier}
+		)
+	</insert>
+	
+	<update id="update">
+		update USR_NOTI_WAY_CNFG set
+			 MAIL_YN			= #{channel.mail}
+			,SMS_YN				= #{channel.sms}
+			,NOTE_YN			= #{channel.note}
+			,MSNG_YN			= #{channel.messenger}
+			,WEB_YN				= #{channel.web}
+			,PUSH_YN				= #{channel.push}
+		<include refid="whereOne"/>
+	</update>
+	
+	<delete id="delete">
+		delete from USR_NOTI_WAY_CNFG
+		<include refid="whereOne"/>
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from USR_NOTI_WAY_CNFG
+		<include refid="whereAll"/>
+	</delete>
+	
+	<select id="exists" resultType="Integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>
+
+</mapper>

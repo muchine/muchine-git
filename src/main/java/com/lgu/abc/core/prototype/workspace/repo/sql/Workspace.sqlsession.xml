@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.workspace.Workspace">
+
+	<resultMap id="result" type="Workspace">
+		<id property="id" column="workspace.id"/>
+		
+		<result property="name"				column="workspace.name"/>
+		<result property="category.code"	column="workspace.category.code"/>
+		
+		<association property="company" resultMap="company"/>
+	</resultMap>
+	
+	<resultMap id="company" type="Company">
+		<result property="id"		column="workspace.companyId"/>
+	</resultMap>
+	
+	<sql id="columns">
+		 ws.WS_SEQ		as "workspace.id"
+		,ws.CORP_SEQ	as "workspace.companyId"
+		,ws.WS_NM		as "workspace.name"
+		,ws.WS_TYP_CD	as "workspace.category.code"
+	</sql>
+	
+	<sql id="count">
+			count(ws.WS_SEQ)
+	</sql>
+		
+	<sql id="table">
+		from WS_INFO ws
+	</sql>
+		
+	<sql id="join">
+		
+	</sql>
+	
+	<sql id="whereOne">
+		where WS_SEQ = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where ws.WS_SEQ= #{id}
+	</sql>
+		
+	<sql id="findAll">
+		where ws.CORP_SEQ = #{id}	
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+		
+	<select id="exists" resultType="integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findAll"/>
+ 	</select>
+ 	
+</mapper>

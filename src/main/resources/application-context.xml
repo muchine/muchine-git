@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+        xmlns:util="http://www.springframework.org/schema/util"
+        xmlns:springfield="http://www.u2ware.com/schema/springfield"
+		xsi:schemaLocation="
+                http://www.springframework.org/schema/beans 
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context 
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/mvc 
+                http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                http://www.springframework.org/schema/jdbc 
+                http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+                http://www.springframework.org/schema/util 
+                http://www.springframework.org/schema/util/spring-util.xsd
+                http://www.u2ware.com/schema/springfield 
+                http://www.u2ware.com/schema/springfield/u2ware-springfield.xsd">
+
+	<!-- properties -->
+	<util:properties id="prop" location="classpath:prop/application-context.properties"/>
+	<util:properties id="abcProp" location="classpath:prop/abc.properties"/>
+	<util:properties id="urlProp" location="classpath:prop/url.properties"/>
+	
+	<import resource="classpath:com/u2ware/springfield/context-datasource-hsql.xml"/>
+	<import resource="classpath:com/u2ware/springfield/context-datasource-c3p0.xml"/>     
+	<import resource="classpath:com/u2ware/springfield/context-orm-jpa.xml"/> 
+	<import resource="classpath:com/u2ware/springfield/context-orm-sqlsession.xml"/>      
+	<import resource="classpath:com/u2ware/springfield/context-webmvc-view.xml"/>
+	<import resource="classpath:com/u2ware/springfield/context-webmvc.xml"/>
+	
+	<import resource="classpath:context/context-orm-mongodb.xml"/>
+	<import resource="classpath:context/context-mail.xml"/>
+	<import resource="classpath:context/context-cache.xml"/>
+	<import resource="classpath:context/context-tasks.xml"/>
+	
+	<!-- image context -->
+	<mvc:resources mapping="/imagetmp/**" location="/imagetmp/" />
+	<mvc:resources mapping="/image/**" location="/image/" />
+	<mvc:resources mapping="/files/**" location="/files/" />
+	 
+	<mvc:interceptors>
+	 	<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+		<bean class="com.u2ware.springfield.controller.HandlerLoggingInterceptor"/>
+		<bean class="com.lgu.abc.core.web.interceptor.LoggingInterceptor"/>
+		<bean class="com.lgu.abc.core.web.interceptor.security.SecurityInterceptor"/>
+		<bean class="com.lgu.abc.core.web.interceptor.component.ComponentInterceptor"/>
+	</mvc:interceptors>
+	 
+	<context:component-scan base-package="com.lgu.abc" />
+	
+	<springfield:modules base-package="com.lgu.abc" default-strategy="SQLSESSION" />
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en"/>
+	</bean>
+
+	<!-- U+ Box -->
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+		<property name="messageConverters">
+		<list>
+			<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+			<!-- 	            <bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"/> -->
+		<!-- 	            <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/> -->
+			<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+				<property name="objectMapper" ref="customObjectMapper"/>
+			</bean>
+		</list>
+		</property>
+	</bean>
+	
+	<bean id="customObjectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
+	<context:property-placeholder location="classpath:prop/application-context.properties"/>
+	
+	
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<list>
+				<bean class="com.u2ware.springfield.support.conversion.StringTrimFormatter"/>
+				<bean class="com.lgu.abc.core.support.formatter.DateFormatter" />
+				<bean class="com.lgu.abc.core.support.formatter.NameFormatter" />
+				<bean class="com.lgu.abc.core.support.formatter.SizeFormatter" />
+				<bean class="com.lgu.abc.core.support.formatter.PartyFormatter" />
+				<bean class="com.lgu.abc.core.support.formatter.UserNameFormatter" />
+				<bean class="com.lgu.abc.core.support.formatter.PhoneNumberFormatter" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSessionMapperLocations" class="com.u2ware.springfield.support.resource.ResourcePatternResolverBean">
+		<property name="targetName" value="SqlSession"/>
+		<property name="locationPatterns" value="
+			classpath*:#{prop['basePackage'].replace('.','/')}#{prop['orm.sqlsession.mapperLocationsPattern']},
+			#{prop['baseWebapp']}#{prop['orm.sqlsession.mapperLocationsPattern']}
+		"/>
+	</bean>
+	
+	<bean id="messageSourceBasenames" class="com.u2ware.springfield.support.resource.ResourcePatternResolverBean">
+		<property name="targetName" value="MessageSource"/>
+		<property name="locationPatterns" value="
+			classpath:com/u2ware/springfield/**/messages.xml,
+			classpath*:#{prop['basePackage'].replace('.','/')}#{prop['webmvc.messageBasenamesPattern']},
+			#{prop['baseWebapp']}#{prop['webmvc.messageBasenamesPattern']}
+		"/>
+	</bean>
+	
+</beans>

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/*===	Web Font 정의			================ */
+@font-face {
+	font-family: 'MalgunGothic';
+	src: url('./abc-common/webfont/malgun.eot');
+	src: url('./abc-common/webfont/malgun.eot?#iefix') format('embedded-opentype'),
+	     url('./abc-common/webfont/malgun.woff') format('woff'),
+	     url('./abc-common/webfont/malgun.ttf') format('truetype'),
+	     url('./abc-common/webfont/malgun.svg#MalgunGothic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	font-family:MalgunGothic,돋움,dotum,굴림,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;	
+}

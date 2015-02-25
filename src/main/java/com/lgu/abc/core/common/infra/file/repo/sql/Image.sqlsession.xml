@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.common.infra.file.Image">
+
+	<resultMap id="result" type="Image" extends="com.lgu.abc.core.common.infra.file.File.result">
+
+	</resultMap>
+			
+	<sql id="columns">
+		<include refid="com.lgu.abc.core.common.infra.file.File.columns"/>
+	</sql>
+	
+	<sql id="count">
+		<include refid="com.lgu.abc.core.common.infra.file.File.count"/>
+	</sql>
+	
+	<sql id="table">
+		<include refid="com.lgu.abc.core.common.infra.file.File.table"/>
+	</sql>
+	
+	<sql id="join">
+		<include refid="com.lgu.abc.core.common.infra.file.File.join"/>
+	</sql>
+	
+	<sql id="whereOne">
+		<include refid="com.lgu.abc.core.common.infra.file.File.whereOne"/>
+	</sql>
+	
+	<sql id="findOne">
+		<include refid="com.lgu.abc.core.common.infra.file.File.findOne"/>
+	</sql>
+	
+	<sql id="whereAll">
+		<include refid="com.lgu.abc.core.common.infra.file.File.whereAll"/>
+	</sql>
+	
+	<sql id="findAll">
+		<include refid="com.lgu.abc.core.common.infra.file.File.findAll"/>
+	</sql>
+	
+	<sql id="order">
+		<include refid="com.lgu.abc.core.common.infra.file.File.order"/>
+	</sql>
+	
+	<select id="exists" resultType="Integer">
+		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		select
+		<include refid="count"/>
+		<include refid="table"/>
+		<include refid="join"/>
+ 		<include refid="findAll"/>
+ 	</select>	
+	
+</mapper>

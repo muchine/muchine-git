@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgu.abc.core.prototype.org.user.User">
+
+	<resultMap id="result" type="User">
+		<id property="id" column="user.id"/>
+	
+		<result property="loginId"			column="user.loginId"/>
+		<result property="name.korean"		column="user.name.korean"/>
+		<result property="name.english"		column="user.name.english"/>
+		<result property="name.chinese"		column="user.name.chinese"/>
+		<result property="name.japanese"	column="user.name.japanese"/>
+		<result property="title"			column="user.title"/>
+		<result property="stopped"			column="user.stopped"/>
+		<result property="locale"			column="user.locale"/>
+
+		<association property="position" resultMap="com.lgu.abc.core.prototype.org.user.Position.result"/>
+		<association property="title" resultMap="com.lgu.abc.core.prototype.org.user.Title.result"/>
+		<association property="photo" resultMap="photo"/>
+		<association property="departmentContext" resultMap="departmentContext"/>
+		<association property="role.transfered.company" notNullColumn="user.companyId" resultMap="companyRoles"/>
+		
+		<collection property="role.transfered.workspaces" notNullColumn="user.workspace.id" 
+					resultMap="workspaceRoles"/>
+		<collection property="role.transfered.departments" notNullColumn="association.department.id" 
+					resultMap="com.lgu.abc.core.prototype.org.user.DepartmentAssociation.role"/>
+	</resultMap>
+		
+	<resultMap id="departmentContext" type="DepartmentContext">
+		<id column="user.id"/>
+		<collection property="associations" notNullColumn="association.department.id" 
+					resultMap="com.lgu.abc.core.prototype.org.user.DepartmentAssociation.result"/>
+	</resultMap>
+		
+	<resultMap id="photo" type="ProfileImage">
+		<id property="id"		column="user.photo.id"/>
+		<result property="url"	column="user.photo.url"/>
+	</resultMap>
+	
+	<resultMap id="companyRoles" type="CompanyRoleTO">
+		<id property="companyId" column="user.companyId"/>
+		<result property="companyRoleCode"	column="user.companyRoleCode"/>
+	</resultMap>
+	
+	<resultMap id="workspaceRoles" type="WorkspaceRoleTO">
+		<id property="workspaceId"		column="user.workspace.id"/>
+		<result property="role.code"	column="user.workspace.role.code"/>
+	</resultMap>
+			
+	<sql id="columns">
+			 cu.USR_KEY		as "user.id"
+			,cu.CORP_SEQ	as "user.companyId"
+			,cu.USR_ID		as "user.loginId"
+			,cu.KOR_NM		as "user.name.korean"
+			,cu.ENG_NM		as "user.name.english"
+			,cu.CHI_NM		as "user.name.chinese"
+			,cu.JAP_NM		as "user.name.japanese"
+			,cu.IMG_ATCH_FILE_SEQ	as "user.photo.id"
+			,cu.IMG_URL		as "user.photo.url"
+			,cu.USR_PWR_CD	as "user.companyRoleCode"
+			,cu.STOP_YN		as "user.stopped"
+			,cu.LANG_CD		as "user.locale"
+			,cu.REG_DTIME	as "user.registeredTime"
+			,cu.REG_USR_KEY	as "user.register"
+			,cu.MOD_DTIME	as "user.modifiedTime"
+			,cu.MOD_USR_KEY	as "user.modifier"
+			,cw.WS_SEQ		as "user.workspace.id"
+			,cm.MBR_PWR_CD	as "user.workspace.role.code"
+			,<include refid="com.lgu.abc.core.prototype.org.user.Position.columns"/>
+			,<include refid="com.lgu.abc.core.prototype.org.user.Title.columns"/>
+			,<include refid="com.lgu.abc.core.prototype.org.user.DepartmentAssociation.columns"/>
+	</sql>
+	
+	<sql id="count">
+		count(distinct(cu.USR_KEY))
+	</sql>
+	
+	<sql id="table">
+		from USR_INFO cu
+	</sql>
+	
+	<sql id="join">
+		left join USR_POS up on cu.POS_SEQ = up.POS_SEQ
+		left join USR_DUTY ut on ut.DUTY_SEQ = cu.DUTY_SEQ
+		
+		left join USR_USER_DEPT_MAP da on cu.USR_KEY = da.USR_KEY
+		<include refid="com.lgu.abc.core.prototype.org.user.DepartmentAssociation.join"/>
+		
+		left join WS_MBR cm on cm.USR_KEY = cu.USR_KEY and cm.JOIN_STTS_CD = '1'
+		left join WS_INFO cw on cm.WS_SEQ = cw.WS_SEQ and cw.WS_REQ_STTS_CD = '2'
+	</sql>
+	
+	<sql id="select">
+		select
+		<include refid="columns"/>
+		<include refid="table"/>
+		<include refid="join"/>
+	</sql>
+	
+	<sql id="selectCount">
+		select
+			count(USR_KEY)
+		from USR_INFO
+	</sql>
+	
+	<sql id="whereOne">
+		where USR_KEY = #{id}
+	</sql>
+	
+	<sql id="findOne">
+		where cu.USR_KEY = #{id}
+	</sql>
+	
+	<sql id="findAll">
+		<where>
+			<if test="query.status">
+				cu.DEL_YN = #{query.status.deleted}
+			</if>
+			
+			<if test="query.stopped != null">
+				and cu.STOP_YN = #{query.stopped}
+			</if>
+			
+			<if test="query.companyId != null">
+				and cu.CORP_SEQ = #{query.companyId}
+			</if>
+			
+			<if test="query.organization">
+				<!-- 
+					If a condition checking if department id in department association is not null is missed,
+					user rows like system admin which has no department associations is queried together by outer join mechanism.			
+				-->
+				and da.DEPT_SEQ is not null and (
+					<if test="query.organization.userIds.size > 0">
+					cu.USR_KEY in
+					<foreach item="item" index="index" collection="query.organization.userIds" open="(" separator="," close=")">#{item}</foreach>
+					</if>
+					
+					<if test="query.organization.userIds.size > 0 and query.organization.departmentIds.size > 0">
+					or
+					</if>
+					
+					<if test="query.organization.departmentIds.size > 0">
+					da.DEPT_SEQ in 
+					<foreach item="item" index="index" collection="query.organization.departmentIds" open="(" separator="," close=")">#{item}</foreach>
+					</if>
+				)
+			</if>
+			
+			<if test="query.messengerId">
+				and cu.MSNG_ID = #{query.messengerId}
+			</if>
+
+			<if test="query.names != null and query.names.size() > 0">
+				and cu.KOR_NM in
+				<foreach item="item" index="index" collection="query.names" open="(" separator="," close=")">#{item}</foreach>
+			</if>
+						
+			<if test="query.companyRole != null">
+				and cu.USR_PWR_CD = #{query.companyRole}
+			</if>
+			
+			<if test="query.searcher != null">
+				and cu.KOR_NM like '%' + #{query.searcher.text} + '%'
+			</if>
+			
+			<if test="query.loginId">
+				and cu.USR_ID = #{query.loginId}
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="order">
+		
+	</sql>
+		
+	<select id="exists" resultType="integer">
+		<include refid="selectCount"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="read" resultMap="result">
+		<include refid="select"/>
+		<include refid="findOne"/>
+	</select>
+	
+	<select id="findAll" resultMap="result">
+ 		<include refid="select"/>
+ 		<include refid="findAll"/>
+ 		<include refid="order"/>
+ 	</select>
+ 	
+ 	<select id="findAllCount" resultType="Long">
+ 		<include refid="selectCount"/>
+ 		 <include refid="findAll"/>
+ 	</select>
+ 	
+</mapper>

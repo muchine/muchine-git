@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="ip.invalid">Invalid IP address</entry>
+	<entry key="attached.invalid">Invalid attached file</entry>
+	<entry key="loginid.invalid">Invalid login id</entry>
+	<entry key="password.invalid">Invalid password</entry>
+	<entry key="password.reused">A new password equals to the old one.</entry>
+	<entry key="anniversary.invalid">Invalid anniversary</entry>
+	<entry key="format.datetime.invalid">Invalid date/time format</entry>
+
+	<entry key="import.message.count">{1} of {0} rows have been imported.</entry>
+	
+	<entry key="exception.message.InvalidPeriodException">Invalid period.</entry>
+	
+	<entry key="exception.message.DataImportException">An error occurred during import.</entry>
+	<entry key="exception.message.IllegalRequestException">Illegal request.</entry>
+	<entry key="exception.message.InvalidNameException">Name is invalid.</entry>
+	<entry key="exception.message.UnknownExcelFormatException">Unrecognized excel format.</entry>
+	<entry key="exception.message.UnauthorizedRequestException">Not authorized request.</entry>	
+
+	<entry key="exception.message.FileNumberExcessException">The number of attached files exceeds a limit.</entry>	
+	<entry key="exception.message.FileSizeExcessException">The size of attached files exceeds a limit.</entry>	
+	<entry key="exception.message.FileSizeSumExcessException">The sum of attached file size exceeds a limit.</entry>	
+	<entry key="exception.message.NoAvailableFileSpaceException">There is no available file space.</entry>
+</properties>

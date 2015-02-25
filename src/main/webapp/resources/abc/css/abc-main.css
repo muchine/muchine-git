@@ -1,0 +1,100 @@
+@CHARSET "UTF-8";
+@import url("./abc-common/abc-widget.css");
+
+/*=== 메인영역 */
+.layContent {position:relative; float:left; width:100%; margin:0px -54px 0px 0px;}
+	.layContainer {position:relative; min-height:700px; margin:0px 54px 0px 0px; background-color:transparent;}
+	section.abc-content  {position:relative; padding:28px 20px 10px 20px; font-family:돋움,dotum,굴림,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}
+	section.abc-content .mailSettIco {position:absolute; top:5px; right:15px; width:20px; height:20px; text-indent:-3000px; ;}
+
+
+/* 위젯 영역 스타일	(widget)	=========================== */
+/* 왼쪽 영역 */
+section.layLeftContainer {float:left; width:350px; padding-bottom:30px; z-index:6120;}
+	div.layLeft	  {position:relative;}
+	/* div#layLeft_corp {border-bottom:2px solid red;} */
+	/* div#layLeft_usr  {} */
+
+
+/* 중앙 영역 */
+section.layCenterContainer {float:left; width:100%; min-height:600px; margin:0 -350px; padding-bottom:30px; z-index:6110;}
+	div.layCenter {position:relative; margin:0 360px;}
+	/* div#layCenter_corp {border-bottom:2px solid red;} */
+	/* div#layCenter_usr  {} */
+	
+
+/* 오른쪽 영역 */
+section.layRightContainer {position:relative; float:right; width:350px; padding-bottom:30px; z-index:6130;}
+	div.layRight  {position:relative;}
+	/* div#layRight_corp {border-bottom:2px solid red;} */
+	/* div#layRight_usr  {} */
+	
+
+
+/* 전사메인 위젯설정 윈도우 */
+#layMainCnfgWin {display:none; position:fixed; top:69px; right:-700px; width:630px; z-index:10001;}
+	#layMainCnfgWin .tabConts {position:relative; height:430px; padding-left:8px;}
+	#layMainCnfgWin .tabConts li {padding:4px 5px 3px 5px; cursor:pointer;}
+	#layMainCnfgWin .tabConts .group {position:relative; float:left; width:250px;}
+	#layMainCnfgWin .tabConts .group header.grhd.usable {position:absolute; top:0; left:0; width:240px; text-align:center;}
+	#layMainCnfgWin .tabConts .group .wgList_usable {width:250px; height:300px; margin-top:50px; overflow:auto;}
+	#layMainCnfgWin .tabConts .wgList_btnBx  {float:left; width:50px; margin:160px 0 0 0; text-align:center;}
+	#layMainCnfgWin .tabConts .wgList_btnBx button {width:30px; margin-bottom:5px;}
+	#layMainCnfgWin .tabConts .group header.grhd.used {position:absolute; top:0; left:0; width:240px; text-align:center;}
+	#layMainCnfgWin .tabConts .wgList_used   {float:right; width:250px; height:300px;  margin-top:50px; overflow:auto;}
+	#layMainCnfgWin .tabConts .btnBx {clear:both; width:200px; margin:0 auto; text-align:center; }
+	#layMainCnfgWin .tabConts .btnBx button {width:60px; margin-top:20px;}
+
+
+
+/* 위젯설정 윈도우				=========================== 
+#layMainCnfgWin {display:none; position:absolute; top:5px; right:-700px; width:630px; z-index:10000;}
+#layMainCnfgWin .tabConts {position:relative; height:460px;}
+#layMainCnfgWin .tabConts li {padding:4px 5px 3px 5px; cursor:pointer;}
+#layMainCnfgWin .tabConts h3.usable {position:absolute; top:30px; left:20px; width:200px; text-align:center;}
+#layMainCnfgWin .tabConts h3.used   {position:absolute; top:30px; right:20px; width:200px; text-align:center;}
+#layMainCnfgWin .tabConts .wgList_usable {float:left; width:200px; height:300px; margin:50px 0 50px 20px; border:1px solid #ccc; overflow:auto;}
+#layMainCnfgWin .tabConts .wgList_btnBx  {float:left; width:110px; margin:180px 0 0 10px; text-align:center;}
+#layMainCnfgWin .tabConts .wgList_btnBx button {width:60px;}
+#layMainCnfgWin .tabConts .wgList_used   {float:right;width:200px; height:300px; margin:50px 20px 50px 0; border:1px solid #ccc; overflow:auto;}
+
+#layMainCnfgWin .tabConts .btnBx {clear:both; width:200px; margin:0 auto; text-align:center;}
+#layMainCnfgWin .tabConts .btnBx button {width:80px;}
+*/
+	
+/*
+=== Class Name	-----------
+div 박스 : wgBx
+
+
+=== Id Name		-----------
+14 
+
+사용자정보 : wg_profile
+
+To-do그래프 : wg_todo
+
+근태정보 : wg_wrk
+
+달력(이미지) : wg_cal
+
+쪽지 : wg_note
+
+메일 : wg_mail
+
+친구 : wg_group
+
+코웍 : wg_cowork
+
+전자결재 : wg_apr
+
+달력(리스트) :wg_calendar
+
+타스크 : wg_task
+
+요청 : wg_request
+
+게시판 : wg_brd
+
+포토앨범 : wg_poto
+*/
